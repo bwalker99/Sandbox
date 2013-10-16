@@ -25,7 +25,7 @@ if(bbContext.hasCourseContext()){
 %>
 
 
-<hr/>You are in course <%=course.getCourseId() %>:<%=course.getTitle() %>:<%=course.getDescription() %>.
+<hr/>You are currently course <%=course.getCourseId() %>:<%=course.getTitle() %>:<%=course.getDescription() %>.
 <%}%>
 
 </bbNG:includedPage>
