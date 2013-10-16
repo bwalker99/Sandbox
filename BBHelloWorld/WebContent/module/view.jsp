@@ -24,6 +24,7 @@ if(bbContext.hasCourseContext()){
 	Course course = bbContext.getCourse();
 %>
 
+
 <hr/>You are in course <%=course.getCourseId() %>:<%=course.getTitle() %>:<%=course.getDescription() %>.
 <%}%>
 
