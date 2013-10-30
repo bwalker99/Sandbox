@@ -4,6 +4,7 @@ public class HelloWorld {
 		System.out.println("Hello World to Git from Bob with more - edit from Github");
 		System.out.println("Edit from home - more edits from home...");
 		System.out.println("More edits from work...123-456");
+		System.out.println("Edits from home");
 
 	}
 
