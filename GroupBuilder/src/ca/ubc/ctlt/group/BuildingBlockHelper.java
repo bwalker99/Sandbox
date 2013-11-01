@@ -10,6 +10,7 @@ import blackboard.platform.plugin.PlugInException;
 import blackboard.platform.plugin.PlugInUtil;
 
 /**
+ * Modified by Bob.
  * This is a helper class for your building block. Feel free to modify it to meet the needs
  * of this building block. 
  *
