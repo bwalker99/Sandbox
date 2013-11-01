@@ -1,0 +1,9 @@
+bin/
+dist/
+build/
+build.test/
+reports/
+docs/
+lib/servlet-api*
+lib/*.jar
+*.swp

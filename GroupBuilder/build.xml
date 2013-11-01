@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="Group Building Block by UBC" default="dist" basedir=".">
+    <description>Group Building Block for Blackboard Learn 9</description>
+
+    <property file="build.properties" />
+
+    <path id="classpath.base">
+        <fileset dir="lib/">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${bbsdk}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="classpath.test">
+        <pathelement location="${build}"/>
+    	<pathelement location="${build.test}"/>
+        <path refid="classpath.base" />
+    </path>
+
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build}"/>
+        <mkdir dir="${build.test}"/>
+    </target>
+
+    <target name="install-ivy" description="install the ivy task jar">
+        <mkdir dir="${user.home}/.ant/lib"/>
+        <get dest="${user.home}/.ant/lib/ivy.jar" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.2.0/ivy-2.2.0.jar"/>
+    </target>
+
+    <target name="resolve" description="retrieve dependencies with ivy">
+        <ivy:retrieve />
+    </target>
+
+    <target name="compile" depends="init, resolve">
+        <javac srcdir="${src}" destdir="${build}" debug="true" includes="**/*.java" includeantruntime="false">
+            <classpath refid="classpath.base"/>
+        </javac>
+    </target>
+
+    <target name="compile-test" depends="compile">
+        <javac srcdir="${src.test}" destdir="${build.test}" debug="true" includes="**/*.java" includeantruntime="false">
+            <classpath refid="classpath.test"/>
+        </javac>
+    </target>
+
+    <target name="deploy" depends="dist">
+        <taskdef name="b2deploy" classpath="${basedir}/lib/b2deploy-task.jar" classname="org.oscelot.ant.B2DeployTask" />
+        <b2deploy localfilepath="${dist}/${b2.package.name}.war" host="192.168.56.101" courseorgavailable="true" clean="true" />
+    </target>
+
+    <target name="dist" depends="compile">
+        <mkdir dir="${dist}" />
+        <war destfile="${dist}/${b2.package.name}.war" basedir="WebContent">
+            <classes dir="${build}"></classes>
+        </war>
+    </target>
+
+    <target name="check-compatibility">
+        <taskdef name="fibbba" classname="com.blackboard.fibbba.CheckFibbbaTask" classpath="${basedir}/lib/fibbba-ant.jar" />
+        <fibbba srcfile="${dist}/${b2.package.name}.war" email="pan.luo@ubc.ca"/>
+    </target>
+
+    <target name="clean" description="clean up">
+        <delete dir="${build}" />
+        <delete dir="${build.test}" />
+        <delete dir="${dist}" />
+        <delete dir="lib/">
+            <exclude name="b2deploy-task.jar" />
+            <exclude name="fibbba-ant.jar" />
+        </delete>
+    </target>
+
+    <target name="test" description="unit test" depends="compile-test">
+        <junit printsummary="yes">
+            <classpath refid="classpath.test"/>
+            <formatter type="brief" usefile="false" />
+            <batchtest haltonfailure="no" fork="yes"> 
+                <fileset dir="${build.test}"> 
+                    <include name="**/*.class" /> 
+                </fileset> 
+            </batchtest> 
+        </junit>
+    </target>
+
+    <target name="test-ci" description="unit test for ci server" depends="compile-test">
+        <mkdir dir="${reports.test}"/>
+        <junit printsummary="yes" haltonfailure="yes" showoutput="no">
+            <classpath refid="classpath.test"/>
+            <formatter type="xml"/> 
+            <batchtest haltonfailure="no" fork="yes" todir="${reports.test}"> 
+                <fileset dir="${build.test}"> 
+                    <include name="**/*.class" /> 
+                </fileset> 
+            </batchtest> 
+        </junit>
+    </target>
+
+    <!--<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="classpath.base"/>
+    <target name="pmd">
+        <pmd>
+            <classpath refid="classpath.base"/>
+            <formatter type="xml" toFile="${reports.test}/pmd_report.html" toConsole="true"/>
+            <fileset dir="${src}">
+                <include name="**/*.java"/>
+            </fileset>
+            <ruleset>basic</ruleset>
+            <ruleset>braces</ruleset>
+            <ruleset>clone</ruleset>
+            <ruleset>finalizers</ruleset>
+            <ruleset>imports</ruleset>
+            <ruleset>logging-jakarta-commons</ruleset>
+            <ruleset>j2ee</ruleset>
+            <ruleset>migrating</ruleset>
+            <ruleset>optimizations</ruleset>
+            <ruleset>strictexception</ruleset>
+            <ruleset>strings</ruleset>
+            <ruleset>sunsecure</ruleset>
+            <ruleset>unusedcode</ruleset>
+        </pmd>
+    </target>-->
+
+    <taskdef resource="checkstyletask.properties" classpathref="classpath.base"/>
+
+    <target name="checkstyle" description="Generates a report of code convention violations.">
+
+        <checkstyle config="docs/checkstyle_checks.xml" failureProperty="checkstyle.failure" failOnViolation="false">
+            <formatter type="xml" tofile="${reports.test}/checkstyle_report.xml"/>
+            <fileset dir="${src}" includes="**/*.java"/>
+        </checkstyle>
+
+        <!--<style in="${reports.test}/checkstyle_report.xml" out="${reports.test}/checkstyle_report.html" style="docs/checkstyle.xsl"/>-->
+
+    </target>
+
+    <target name="run-ci" description="run all tasks for ci server" depends="test-ci"/>
+</project>
