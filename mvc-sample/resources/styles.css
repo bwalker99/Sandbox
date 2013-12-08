@@ -1,0 +1,320 @@
+/* Style sheet for election pages */
+body {
+	color:#000000;
+	font-size:11px;
+	font-family:verdana,helvetica,arial,sans-serif;
+	padding: 10px 10px 10px 10px;
+}
+table, th, tr, td, span, h1, h2, h3, h4, h5, h6 {
+	color:#000000;
+	font-size:11px;
+	font-family:verdana,helvetica,arial,sans-serif;
+}
+.formbutton{
+	cursor:pointer;
+	border:outset 1px #f0f0f0;
+	background:#f0f0f0;
+	color:#000000;
+	font-weight:bold;
+	padding: 1px 2px;
+}
+
+hr {
+	margin: 15px 0 5px 5px;
+	width:250px;
+	clear:both;
+} 
+
+a {
+	color:#0000FF;
+	font-family:verdana,helvetica,arial,sans-serif;
+	text-decoration:none;
+}
+
+p {
+	margin: 0 0 6px 0;
+}	
+
+a:hover {
+	color:#990000;
+	text-decoration:underline;
+}
+a:visited {
+	color:#660099;
+	text-decoration:none;
+}
+
+.election-title {
+	/* background-color:yellow; */
+	font-weight: bold;
+	font-size: 15px;
+	padding: 0 0 10px 5px;
+	width:100%;
+	clear:both;
+}
+
+.election-wrapper {
+	width:500px;
+}
+
+.election-indent {
+	margin:0 0 0 15px;
+	padding:3px 0 3px 0;
+	width:100%;
+	clear:both;
+ }
+
+.election-position-text {
+	font-size: 13px;
+	padding: 5px 0 5px 5px;
+	width:100%;
+	clear:both;
+}
+
+.election-candidate-name {
+    background-color:#CDCDCD;
+	font-size: 11px;
+	padding: 4px 3px 4px 3px;
+	margin: 3px 0 5px 20px;
+	float:left;
+	width:200px;
+	clear:left;
+}
+
+.election-checkbox {
+	padding: 4px 0 4px 0;
+	margin: 0 0 5px 0;
+	width:20px;
+	float:left;
+}
+
+.election-button {
+	margin:10px 10px 10px 20px;
+	clear:both;
+}
+
+div.election-round-corners {
+	background:#CDCDCD;
+	float:left;
+	clear:left;
+	width:400px;
+	clear:both;
+	margin:1px 0 1px 20px;
+}
+
+div.election-round-corners-wide {
+	background:#CDCDCD;
+	float:left;
+	clear:left;
+	width:700px;
+	clear:both;
+	margin:1px 0 5px 20px;
+}
+
+ .election-checkbox-div{
+   float:right;
+   width:20px;
+   padding:3px 5px 0 5px;
+ }
+ .election-candidate-description{
+   margin-right:10px;
+   padding:5px 5px 5px 10px;
+ }
+ 
+.election-position-directions {
+	width:100%;
+	clear:both;
+	margin:10px 0 5px 0;
+}
+
+.election-position-description {
+	width:100%;
+	margin:0 0 0 15px;
+	padding:0 0 10px 0;
+}
+
+.election-position-name {
+	font-weight:bold;
+}
+
+/* CSS for rounded corners */
+div.nifty{ 
+	background:#CDCDCD;
+	width:275px;
+	margin:5px 5px 5px 5px;
+	clear:both;
+
+}
+ 
+b.rtop, b.rbottom {
+	display:block;
+	background: #FFF;
+
+}
+
+b.rtop b, b.rbottom b { 
+	display:block;
+	height: 1px;
+    overflow: hidden; 
+	background:#CDCDCD;
+}
+
+b.r1{margin: 0 5px}
+b.r2{margin: 0 3px}
+b.r3{margin: 0 2px}
+
+b.rtop b.r4, b.rbottom b.r4 {
+	margin: 0 1px;
+	height: 2px;
+	z-index:0;
+}
+
+/* styles specifically for election listing page */
+.election-table {
+	width:800px;
+}
+.election-header-row {
+	background:#EEEEEE;
+}
+.election-table-td{
+	background:#FFFFFF;
+}
+
+/* Styles for the election results page*/
+
+  .graph { 
+        position: relative; /* IE is dumb */
+        width: 200px; 
+        border: 1px solid #D0D0C0; 
+        padding: 2px; 
+/*	 margin-top: 2px;  */
+	 margin-bottom: 5px;
+	 margin-left: 20px;
+	 clear : both;
+
+    }
+
+    .graph .bar { 
+        display: block;
+        position: relative;
+        background: #D0D0C0; 
+        text-align: center;
+	 text-decoration: none;
+	 font-family: sans-serif; 
+        color: #333; 
+        height: 14px; 
+
+
+    }
+
+    .graph .bar span { 
+	font-size: 10px; 
+	text-align: right;  
+	width: 200;  
+	display: block;
+     }
+
+    .graphlabel { 
+        position: relative; /* IE is dumb */
+        clear: both;
+        display: block; 
+        float: left; 
+        width: 200px; 
+        line-height: 20px;     
+        font-size: 11px;
+	 font-family: sans-serif; 
+        text-align: left; 
+    }
+
+    .alreadyTakenText { 
+        position: relative; /* IE is dumb */
+        clear: both;
+        display: block; 
+        float: left; 
+        width: 100%; 
+        line-height: 20px;     
+        font-size: 11px;
+	 font-family: sans-serif; 
+        text-align: left; 
+	 color:maroon;
+	 padding : 0px 0px 10px 0px;
+    }
+
+    .container { 
+	font-size: 10px; 
+	text-align: right;  
+	width: 300;  
+	display: block;
+    margin-top: 2px;
+	}
+
+    .questiontext {
+	 font-family: sans-serif; 
+	text-align: left;  
+	width: 100%;
+	font-size: 14px; 
+	display: block;
+	padding : 10px 0px 10px 2px;
+	clear : both;
+	font-weight: bold;
+      }
+
+    .surveytitle{
+	font-family: sans-serif; 
+	text-align: left;  
+	width: 100%;
+	font-size: 16px; 
+	display: block;
+	font-weight:bold;
+	padding : 5px 0px 0px 0px;
+      }
+
+    .buttondiv {
+	width: 100%;
+	clear: both;
+    }
+
+
+    .question {
+        font-family: verdana, helvetica, arial, sans-serif;
+	 font-size : 12; font-weight: bold;
+	 padding : 10 0 0 0 ;
+    }
+
+    .heading {
+	text-align : center;
+    }
+
+    .shadedrow {
+	background:#ECECEC;
+    }
+    
+    .surveytable {
+ 	width:100%;
+	border-spacing: 0px;
+	padding: 1px;
+    }
+
+    .answercontainer {
+       width:100%;
+	spacing : 10 10 10 10 ;
+	float: left; 
+	clear:left;
+    }
+
+    .answerchoice { 
+        float: right; 
+        width: 20px; 
+        font-size: 11px;
+	 font-family: sans-serif; 
+        text-align: center; 
+    }
+    
+    .answerlabel { 
+	 padding: 2px 2px 2px 10px;
+        font-size: 11px;
+	 font-family: sans-serif; 
+        text-align: left; 
+	 margin-right:20px;
+    }
+
