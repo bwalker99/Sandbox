@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+  <display-name>Java Servlet demos</display-name>
+  <description>
+     Java Servlet dems
+  </description>
+
+<!-- JSPC servlet mappings start -->
+
+  <servlet>
+    <servlet-name>HelloServlet1</servlet-name>
+    <servlet-class>javaed.HelloServlet1</servlet-class>
+  </servlet>
+
+   <servlet>
+    <servlet-name>HelloServlet2</servlet-name>
+    <servlet-class>javaed.HelloServlet2</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>HelloServlet3</servlet-name>
+    <servlet-class>javaed.HelloServlet3</servlet-class>
+  </servlet>
+
+   <servlet>
+    <servlet-name>HelloServlet4</servlet-name>
+    <servlet-class>javaed.HelloServlet4</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>HelloServlet1</servlet-name>
+    <url-pattern>/test1</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet-mapping>
+    <servlet-name>HelloServlet2</servlet-name>
+    <url-pattern>/test2</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>HelloServlet3</servlet-name>
+    <url-pattern>/test3</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet-mapping>
+    <servlet-name>HelloServlet4</servlet-name>
+    <url-pattern>/test4</url-pattern>
+  </servlet-mapping>
+  
+  
+ </web-app>
