@@ -23,7 +23,7 @@
 -- ie: mysql-connector-java-3.1.12-bin.jar
 -- Login to mysql as samplemgr (bash>mysql -u samplemgr -p ) and create the following table.
 
-
+-- MySQL
 CREATE TABLE sample_autos (
  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  make varchar(32),
@@ -32,4 +32,11 @@ CREATE TABLE sample_autos (
  cost int
  );
 
-
+-- MS SQL Server
+CREATE TABLE sample_autos (
+ id INT IDENTITY(1,1) PRIMARY KEY,
+ make varchar(32),
+ model varchar(32),
+ colour varchar(32),
+ cost int
+ );
