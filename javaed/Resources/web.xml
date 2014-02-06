@@ -7,7 +7,7 @@
 
   <display-name>Java Servlet demos</display-name>
   <description>
-     Java Servlet dem0s
+     Java Servlet dems
   </description>
 
 <!-- JSPC servlet mappings start -->
@@ -17,10 +17,40 @@
     <servlet-class>javaed.HelloServlet1</servlet-class>
   </servlet>
 
- 
+   <servlet>
+    <servlet-name>HelloServlet2</servlet-name>
+    <servlet-class>javaed.HelloServlet2</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>HelloServlet3</servlet-name>
+    <servlet-class>javaed.HelloServlet3</servlet-class>
+  </servlet>
+
+   <servlet>
+    <servlet-name>HelloServlet4</servlet-name>
+    <servlet-class>javaed.HelloServlet4</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>HelloServlet1</servlet-name>
     <url-pattern>/test1</url-pattern>
   </servlet-mapping>
+ 
+ <servlet-mapping>
+    <servlet-name>HelloServlet2</servlet-name>
+    <url-pattern>/test2</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>HelloServlet3</servlet-name>
+    <url-pattern>/test3</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet-mapping>
+    <servlet-name>HelloServlet4</servlet-name>
+    <url-pattern>/test4</url-pattern>
+  </servlet-mapping>
+  
   
  </web-app>

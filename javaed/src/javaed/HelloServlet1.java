@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * See the following for more info. Not necessarily based on this example. 
  * http://www.tutorialspoint.com/servlets/servlets-first-example.htm
  * @author rwalker
  *
