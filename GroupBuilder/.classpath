@@ -14,5 +14,8 @@
 	<classpathentry kind="lib" path="lib/mockito-all-1.9.5-rc1.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api-2.5-sources.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-cms-admin.jar"/>
+	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-platform.jar"/>
+	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-taglibs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

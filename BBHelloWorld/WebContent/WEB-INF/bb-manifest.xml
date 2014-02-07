@@ -4,7 +4,7 @@
     <name value= "BB Hello World"/>
     <handle value= "bb-hello-world-plugin"/>
     <description value= "This plugin is a Hello World sample."/>
-    <version value= "1.1"/>
+    <version value= "0.1.0"/>
     <requires>
     	<bbversion value="9.0.0"/>
     </requires>
