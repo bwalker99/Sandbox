@@ -15,12 +15,14 @@
       <description value="Preparing for v9." />
     </vendor>
     <http-actions></http-actions>
+     
+   
     <module-defs>
       <module-type ext-ref="bb-hello-world" title="bb-hello-world" uicreatable="true">
         <jsp-dir>module</jsp-dir>
         <jsp>
           <view>view.jsp</view>
-        </jsp>
+        </jsp>     
       </module-type>  
       <module type="bb-hello-world" isadmin="false" isavailabletocourse="true" useraddable="true" isdeletable="true" title="BB Hello World - Plug-In Module">
         <description>Sample course module</description>
@@ -32,6 +34,8 @@
 		</module-groups>
       </module>
     </module-defs>
+    
+
     
     <permissions>
       <permission type="persist" name="Content" actions="create,modify,delete"/>

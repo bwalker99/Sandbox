@@ -31,5 +31,6 @@ if(bbContext.hasCourseContext()){
  Description=<%=course.getDescription() %>
  
 <%}%>
+<p><a href="view-bbtags.jsp">With BB Taglibs</a></p>
 
 </bbNG:includedPage>

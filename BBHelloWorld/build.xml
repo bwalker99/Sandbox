@@ -31,7 +31,7 @@
   <target name="dist" depends="compile" description="generate the distribution" >
 
     <!-- Create war file for distribution -->
-    <war destfile="${dist_dir}/${app}-${version}.war" webxml="${resources_dir}/WEB-INF/web.xml">
+    <war destfile="${dist_dir}/${app}.war" webxml="${resources_dir}/WEB-INF/web.xml">
 		<fileset dir="${resources_dir}" includes="*.jsp,*.jspf,*.html,*.css,*.js"/>
     <!--  	<zipfileset dir="${resources_dir}/images" prefix="images"/>   -->
     	<zipfileset dir="${resources_dir}/module" prefix="module"/>
