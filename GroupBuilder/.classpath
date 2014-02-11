@@ -9,13 +9,14 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Blackboard Library"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/mockito-all-1.9.5-rc1-javadoc.jar"/>
-	<classpathentry kind="lib" path="lib/mockito-all-1.9.5-rc1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/mockito-all-1.9.5-rc1.jar"/>
-	<classpathentry kind="lib" path="lib/servlet-api-2.5-sources.jar"/>
-	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
 	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-cms-admin.jar"/>
 	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-platform.jar"/>
 	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-taglibs.jar"/>
+	<classpathentry kind="lib" path="C:/Data/repository/Sandbox/GroupBuilder/WebContent/WEB-INF/lib/commons-csv-1.0-20120512.214544-108.jar"/>
+	<classpathentry kind="lib" path="C:/Data/repository/Sandbox/GroupBuilder/WebContent/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Data/repository/Sandbox/GroupBuilder/WebContent/WEB-INF/lib/commons-io-2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Data/repository/Sandbox/GroupBuilder/WebContent/WEB-INF/lib/opencsv-2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Apps/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

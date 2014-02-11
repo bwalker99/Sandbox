@@ -5,7 +5,7 @@
     <property file="build.properties" />
 
     <path id="classpath.base">
-        <fileset dir="lib/">
+        <fileset dir="${locallib}">
             <include name="**/*.jar"/>
         </fileset>
         <fileset dir="${bbsdk}">
@@ -33,7 +33,7 @@
     </target>
 
     <target name="resolve" description="retrieve dependencies with ivy">
-        <ivy:retrieve />
+<!--        <ivy:retrieve /> -->
     </target>
 
     <target name="compile" depends="init, resolve">
@@ -124,15 +124,16 @@
         </pmd>
     </target>-->
 
+	<!-- 
     <taskdef resource="checkstyletask.properties" classpathref="classpath.base"/>
-
+-->
     <target name="checkstyle" description="Generates a report of code convention violations.">
-
+<!--
         <checkstyle config="docs/checkstyle_checks.xml" failureProperty="checkstyle.failure" failOnViolation="false">
             <formatter type="xml" tofile="${reports.test}/checkstyle_report.xml"/>
             <fileset dir="${src}" includes="**/*.java"/>
         </checkstyle>
-
+-->
         <!--<style in="${reports.test}/checkstyle_report.xml" out="${reports.test}/checkstyle_report.html" style="docs/checkstyle.xsl"/>-->
 
     </target>
