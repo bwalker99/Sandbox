@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <plugin>
+      <name value="Getting Started Guide: HelloWorld_3b"/>
+      <description value="HelloWorld Building Block from the Getting Started Guide"/>
+      <handle value="HelloWorld"/>
+	  <version value="2.0.0"/>
+	  <requires>
+ 	    <bbversion value="6.2.3"/>
+	  </requires>
+	  <vendor>
+	    <id value="bgsg"/>
+	    <name value="Blackboard Building Blocks Getting Started Guide_3b"/>
+	    <url value="http://www.blackboard.com/buildingblocks/gettingstartedguide"/>
+	    <description value="Getting Started Guide v2.0 08.12.10"/>
+	  </vendor>
+	  <http-actions>
+		<config value=""/>
+		<remove value=""/>
+	  </http-actions>
+	  <application-defs>
+	    <application 
+	      handle="HelloWorld" 
+  	      type="course_tool"
+	      name="Getting Started Guide: Building Block template">
+	    <description lang="en_US">
+ 		  HelloWorld example from the Getting Started Guide
+  		</description>
+	    <links>
+	      <link>
+	        <type value="course_tool"/>
+	        <name value="Getting Started Guide: HelloWorld"/>
+	        <url value="helloworld.jsp"/>
+	        <description value="Getting Started Guide: HelloWorld starting point."/>
+          </link>
+	    </links>
+	  </application>
+	</application-defs>
+	<permissions>
+	  <permission type="attribute" name="user.personalinfo" actions="get" />
+		<permission type="attribute" name="user.authinfo" actions="get" />
+	  <permission type="attribute" name="Group" actions="get"/>
+	  <permission type="attribute" name="GroupMembership" actions="get"/>
+	</permissions>
+  </plugin>
+</manifest>
