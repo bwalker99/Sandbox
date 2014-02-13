@@ -4,7 +4,7 @@
 <h2>Hello BB World</h2>
 
 <% 
-if (bbContext.getUser().getUserName().equalsIgnoreCase("guest")){ 
+if (bbContext.getUser().getUserName().equalsIgnoreCase("guest")){ 	
 %>
 You are not logged in.
 <%
@@ -14,7 +14,8 @@ You are logged in as: <%=bbContext.getUser().getUserName() %>.<br/>
 First name: <%=bbContext.getUser().getGivenName() %><br/>
 Last name: <%=bbContext.getUser().getFamilyName() %><br/>
 Student Number: <%=bbContext.getUser().getStudentId() %><br/>
-Email Address: <%=bbContext.getUser().getEmailAddress() %><br/> 
+Email Address: <%=bbContext.getUser().getEmailAddress() %><br/><br/>
+Request URL: <%=bbContext.getRequestUrl()%><br/> 
 
 <%}%>
 
@@ -31,6 +32,6 @@ if(bbContext.hasCourseContext()){
  Description=<%=course.getDescription() %>
  
 <%}%>
-<p><a href="view-bbtags.jsp">With BB Taglibs</a></p>
+<p><a href="<%=bbContext.getRequestUrl()%>/view-bbtags.jsp">With BB Taglibs</a> | <a href="view-nocourse.jsp">View No Course</a> </p>
 
 </bbNG:includedPage>

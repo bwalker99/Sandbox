@@ -11,6 +11,7 @@
         <fileset dir="${bbsdk}">
             <include name="**/*.jar"/>
         </fileset>
+
     </path>
 
     <path id="classpath.test">
@@ -37,12 +38,14 @@
     </target>
 
     <target name="compile" depends="init, resolve">
-        <javac srcdir="${src}" destdir="${build}" debug="true" includes="**/*.java" includeantruntime="false">
+    	<echo>Compiling from ${src} </echo>
+        <javac srcdir="${src}" destdir="${build}" debug="true" includes="**/*.java" includeantruntime="false">        	
             <classpath refid="classpath.base"/>
         </javac>
     </target>
 
     <target name="compile-test" depends="compile">
+
         <javac srcdir="${src.test}" destdir="${build.test}" debug="true" includes="**/*.java" includeantruntime="false">
             <classpath refid="classpath.test"/>
         </javac>

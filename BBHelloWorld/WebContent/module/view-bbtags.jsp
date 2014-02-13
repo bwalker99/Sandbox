@@ -45,5 +45,5 @@ if(bbContext.hasCourseContext()){
  </ul>
 <%}%>
 
-<p><a href="view.jsp">Without BB Taglibs</a></p>
+<p><a href="view.jsp">Without BB Taglibs</a> | <a href="view-nocourse.jsp">View No Course</a> </p>
 </bbNG:genericPage>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="B2-StarterKit/src"/>
+	<classpathentry kind="src" path="GitHelloWorld/src"/>
+	<classpathentry kind="src" path="GroupBuilder/src"/>
+	<classpathentry kind="src" path="GroupBuilder/test"/>
+	<classpathentry kind="src" path="javaed/src"/>
+	<classpathentry kind="src" path="mvc-sample/src"/>
+	<classpathentry kind="lib" path="B2-StarterKit/WebContent/WEB-INF/lib/b2context-1.0.05.jar"/>
+	<classpathentry kind="lib" path="GroupBuilder/lib/b2deploy-task.jar"/>
+	<classpathentry kind="lib" path="GroupBuilder/lib/fibbba-ant.jar"/>
+	<classpathentry kind="lib" path="GroupBuilder/WebContent/WEB-INF/lib/commons-csv-1.0-20120512.214544-108.jar"/>
+	<classpathentry kind="lib" path="GroupBuilder/WebContent/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="GroupBuilder/WebContent/WEB-INF/lib/commons-io-2.3.jar"/>
+	<classpathentry kind="lib" path="GroupBuilder/WebContent/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="GroupBuilder/WebContent/WEB-INF/lib/opencsv-2.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="mvc-sample/build"/>
+</classpath>

@@ -3,6 +3,13 @@
   <!-- ====================================================================== -->
   <!-- =========================== deploy targets =========================== -->
   <!-- ====================================================================== -->
+	
+	  <path id="classpath.base">
+	        <fileset dir="c:/Apps/lib/bb">
+	            <include name="**/*.jar"/>
+	        </fileset>
+
+	    </path>
 
   <target name="deploy" depends="init, -build, -set-deploy-url"
           description="Dynamically deploys all changes to the building block.">
@@ -34,6 +41,11 @@
       
       <fileset dir="${staging.dir}"/>
     </jar>
+  	
+    <war destfile="${distrib.dir}/B2-StarterKit.war" basedir="../WebContent">
+        
+    </war>
+  	
     <antcall target="hook-post-build"/>
   </target>
 
@@ -43,9 +55,8 @@
     
     <javac srcdir="../src" destdir="${staging.dir}/WEB-INF/classes" debug="true" deprecation="true">
       <classpath>
-        <fileset dir="../WebContent/WEB-INF/lib"                       includes="*.jar"/>
-        <fileset dir="${tomcat.home}/lib" includes="*.jar"/>
-      	<!--<fileset dir="${staging.dir}/WebContent/WEB-INF/lib" includes="*.jar"/>-->
+        <fileset dir="../WebContent/WEB-INF/lib" includes="*.jar"/>      	
+      	<fileset dir="c:/Apps/lib/bb" includes="*.jar"/>
       </classpath>
     </javac>
   </target>
