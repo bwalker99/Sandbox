@@ -24,6 +24,7 @@
 	<ul>
 		<li style="list-style-type:disc;list-style-position:inside;"><a href="setup.jsp">Setup</a> First Time? Please Read!</li>	
 		<li style="list-style-type:disc;list-style-position:inside;"><a href="about.jsp">About</a> Information about this building block</li>
+		<li style="list-style-type:disc;list-style-position:inside;"><a href="about2.jsp">About</a> Information about this version of the building block</li>		
 		<li style="list-style-type:disc;list-style-position:inside;"><a href="helloblackboard.jsp">Hello World!</a> (Without BB Taglibs)</li>
 		<li style="list-style-type:disc;list-style-position:inside;"><a href="helloblackboard-bbtags.jsp">Hello World!</a> (With BB Taglibs)</li>
 	</ul>

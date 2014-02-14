@@ -28,7 +28,7 @@
 	<%@ taglib uri="/bbNG" prefix="bbNG" %>
 <%
 	String iconUrl = "/images/ci/icons/bookopen_u.gif"; 
-	String page_title = "HelloWorld_3b: Identifying and Listing Course Memberships";
+	String page_title = "HelloWorld_3b-b: Listing Course Memberships";
 	String msg = null;
 	String EnrDateStr="";
 	
@@ -152,15 +152,17 @@
         <%= page_title %>
     	</bbNG:pageTitleBar>
     </bbNG:pageHeader>
+    <!-- 
     List Session User and Session Course Information. <br>
     Hi <%= sessionUserGivenName %> <%= sessionUserFamilyName %>, <br>
     Your User Name is: <%= sessionUserName %> <br>
     Your email address is: <%= sessionUserEmailAddress %> <br>
     Your batch_uid is: <%= sessionUserBatchID %> <br>
     Your system role is: <%= sessionUserSystemRoleString %> <br>
-    <!-- return User Friendly Role -->
+     -->
+    <!-- return User Friendly Role 
 	Your UI friendly System Role is: "<%= getRoleString( "SYSTEM", sessionUserSYSTEMRole ) %>"<br>
-    
+    -->
     <p>Information about this course. <br>
     <%= sessionCourseCourseTitle %> [BatchUID=<%= sessionCourseBatchUID %> : CourseId=<%= sessionCourseBatchUID %>] <br>
     <ul> <%= sessionCourseDescription%> </ul><br>
@@ -223,7 +225,7 @@
             <bbNG:button id="back" label="Back" onClick="javascript:history.go(-1);"/>
        </form>
     </div>
-    <a href="classlist.jsp">Classlist only</a>
+    <a href="helloworld.jsp">Return to Hello World with User</a>
 </bbNG:learningSystemPage>
 
 <%!
