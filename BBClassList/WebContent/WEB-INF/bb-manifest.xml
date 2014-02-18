@@ -41,6 +41,21 @@
 	    </links>
 	  </application>
 	</application-defs>
+	    <module-defs>
+      <module-type ext-ref="bob-courselist-module" title="bob-courselist-module" uicreatable="true">       
+        <jsp>
+          <view>courselist.jsp</view>
+        </jsp>
+      </module-type>
+      <module type="bob-courselist-module" isadmin="false" isavailabletocourse="true" useraddable="true" isdeletable="true" title="BB CourseList - module">
+        <description>plugin.module.description</description>
+        <ExtraInfo />
+        	<module-groups>
+ 			<module-group id="Everyone" /> 
+		</module-groups>
+      </module>
+    </module-defs>
+	
 	<permissions>
 	  <permission type="attribute" name="user.personalinfo" actions="get" />
 		<permission type="attribute" name="user.authinfo" actions="get" />
