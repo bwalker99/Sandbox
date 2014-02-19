@@ -73,13 +73,58 @@
     <!--  Get courses for user and list -->
     <%
     ca.ubc.med.blackboard.Util util = new ca.ubc.med.blackboard.Util();
+    ca.ubc.med.blackboard.LoadMdupPerson load = new ca.ubc.med.blackboard.LoadMdupPerson();
+    ca.ubc.med.blackboard.MdupPerson MP = load.load("medinst3");        		    		
     
     %>
     <br/><b>From embedded java file - current user:</b><br/>
-    <%= util.getCoursesByUser(sessionUserId) %>
+    <%= util.getCoursesByUserString(sessionUserId) %>
     <br/><b>Different user - medinst3:</b> <br/>
     <%= util.getUserCourses("medinst3") %>
     
     
+    <bbNG:inventoryList 
+    	collection="<%= MP.getCourses() %>" 
+		objectVar="cm" 
+		className="MdupPerson.courseStatus"
+		emptyMsg="No data to display">
+		
+		<bbNG:listElement 
+			label="CourseID" 
+			name="CourseID" 
+			isRowHeader="true">
+    	    	<%= cm.getCourseId() %>
+    	</bbNG:listElement>
+		<bbNG:listElement 
+			label="CourseTitle" 
+			name="CourseTitle"> 
+			<%= cm.getCourseTitle() %>
+		</bbNG:listElement>
+		<bbNG:listElement 
+			label="Role-Existing" 
+			name="Role-Existing"> 		
+			<%= cm.getRoleExisting() %>
+		<bbNG:listElement 
+			label="Role-Expected" 
+			name="Role-Expected"> 		
+			<%= cm.getRoleExpected() %>			
+		</bbNG:listElement>
+		<bbNG:listElement 
+			label="Group-Existing" 
+			name="Group-Existing"> 		
+			<%= cm.getGroupExisting() %>
+		<bbNG:listElement 
+			label="Group-Expected" 
+			name="Group-Expected"> 		
+			<%= cm.getGroupExpected() %>			
+		</bbNG:listElement>
+		<bbNG:listElement 
+			label="Valid" 
+			name="Valid"> 		
+			<%= cm.isValid() %>			
+		</bbNG:listElement>
+
+	</bbNG:inventoryList>
+	
     
 </bbNG:learningSystemPage>

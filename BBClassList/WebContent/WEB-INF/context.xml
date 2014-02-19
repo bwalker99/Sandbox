@@ -1,0 +1,10 @@
+ <Context>
+ <Resource name="jdbc/FOM" auth="Container"
+             type="javax.sql.DataSource"
+             username="fomidm_user"
+             password="f0mus3r"
+             driverClassName="net.sourceforge.jtds.jdbc.Driver"
+             url="jdbc:jtds:sqlserver://fomklnk182t1/FOM_IDM"
+             maxActive="10" maxIdle="4"/>			 			 
+ 
+   </Context>
