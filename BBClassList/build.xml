@@ -21,8 +21,8 @@
         <!-- NOTE. Handy way to set java version (or compliance) Use the 'target' attribute ie:  target="1.6" -->
         <!-- debug=true puts line numbers in error stack dumps. Inflates the code but is handy -->
         <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true" 
-            classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;." 
-            includes="ca/ubc/med/*" />
+            classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;${bblibs};." 
+            includes="ca/ubc/med/blackboard/*" />
     </target>
 	 
 	<buildnumber file="${resources_dir}/_${app}-build.jspf"/>

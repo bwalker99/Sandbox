@@ -1,5 +1,5 @@
 <%@ taglib uri="/bbNG" prefix="bbNG"%>
-<%@ page language="java" import="blackboard.persist.course.*,blackboard.data.course.*" %>
+<%@ page language="java" import="blackboard.persist.course.*,blackboard.data.course.*,blackboard.persist.*,blackboard.platform.persistence.*" %>
 <bbNG:includedPage>
 <h2>Hello BB World</h2>
 
@@ -23,6 +23,7 @@ Request URL: <%=bbContext.getRequestUrl()%><br/>
 // if inside a course
 if(bbContext.hasCourseContext()){ 
 	Course course = bbContext.getCourse();
+	String courseIdParam = request.getParameter("course_id");
 %>
 
 
@@ -31,7 +32,21 @@ if(bbContext.hasCourseContext()){
  Title=<%=course.getTitle() %><br/>
  Description=<%=course.getDescription() %>
  
-<%}%>
+<%
+  out.println("<br/>CourseID as Param=" + courseIdParam);
+// Get course object from parameter:
+BbPersistenceManager bbPm = PersistenceServiceFactory.getInstance().getDbPersistenceManager();
+Id courseId = bbPm.generateId(Course.DATA_TYPE, courseIdParam);
+CourseDbLoader courseLoader = (CourseDbLoader)bbPm.getLoader(CourseDbLoader.TYPE);
+Course paramCourse = courseLoader.loadById(courseId);
+%>
+
+<br/><br/>Course from Parameter:<br/>
+CourseID=<%=paramCourse.getCourseId() %><br/>
+Title=<%=paramCourse.getTitle() %><br/>
+Description=<%=paramCourse.getDescription() %>
+
+  <%}%>
 <p><a href="<%=bbContext.getRequestUrl()%>/view-bbtags.jsp">With BB Taglibs</a> | <a href="view-nocourse.jsp">View No Course</a> </p>
 
 </bbNG:includedPage>
