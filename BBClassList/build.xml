@@ -21,7 +21,7 @@
         <!-- NOTE. Handy way to set java version (or compliance) Use the 'target' attribute ie:  target="1.6" -->
         <!-- debug=true puts line numbers in error stack dumps. Inflates the code but is handy -->
         <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true" 
-            classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;${bblibs};." 
+            classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;${bblibs};${resources_dir}/WEB-INF/lib/FomIDMExternal.jar;." 
             includes="ca/ubc/med/blackboard/*" />
     </target>
 	 

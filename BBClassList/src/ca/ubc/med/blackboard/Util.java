@@ -18,7 +18,7 @@ import blackboard.persist.user.UserDbLoader;
 
 public class Util {
 
-	public String getCoursesByUser(Id userId) {
+	public String getCoursesByUserString(Id userId) {
 		String retval = "";
 		try {
 	    CourseDbLoader courseLoader = CourseDbLoader.Default.getInstance();
@@ -35,6 +35,24 @@ public class Util {
 		return retval;
 	}
 
+	/** 
+	 * Return a list of courses associated with this user. 
+	 * @param userId
+	 * @return
+	 */
+	protected ArrayList<Course> getCoursesByUser(Id userId) {
+		ArrayList<Course> courses = null;
+		try {
+	      CourseDbLoader courseLoader = CourseDbLoader.Default.getInstance();
+	      courses = courseLoader.loadByUserId(userId); 
+		}
+	   	    
+		catch (Exception e) { } 
+
+		return courses;
+	}
+
+	
 	
 	public User getUser(String username) {
 	// prefetch user data for quick lookup later
@@ -57,7 +75,7 @@ public class Util {
 		 UserDbLoader userLoader = UserDbLoader.Default.getInstance();
 		 User user = userLoader.loadByUserName(username);
 		 Id id = user.getId();
-		 retval = getCoursesByUser(id);
+		 retval = getCoursesByUserString(id);
 	 }
 	 catch (Exception pe) { 
 		 System.out.println(pe.getMessage());
@@ -65,8 +83,23 @@ public class Util {
 	 return retval;
 	}
 	
+/** 
+ * TODO - fix placeholder only	
+ * @return
+ */
+protected String getUserCourseRole(String courseId,Id userId) { 
+	return "Instructor";
+}
 
-	 
+/** 
+ * TODO - fix placeholder only	
+ * @return
+ */
+protected String getUserCourseGroup(String courseId,Id userId) { 
+	return "Instructors";
+}
+
+
 private String getCourseRole(String courseId, Id userId) { 
 	String retval = "";
 	String msg = "";
