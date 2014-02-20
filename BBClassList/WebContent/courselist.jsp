@@ -86,41 +86,28 @@
     <bbNG:inventoryList 
     	collection="<%= MP.getCourses() %>" 
 		objectVar="cm" 
-		className="MdupPerson.courseStatus"
+		className="ca.ubc.med.blackboard.MdupPerson.courseStatus" 
 		emptyMsg="No data to display">
 		
-		<bbNG:listElement 
-			label="CourseID" 
-			name="CourseID" 
-			isRowHeader="true">
+		<bbNG:listElement label="CourseID" 	name="CourseID" isRowHeader="true">
     	    	<%= cm.getCourseId() %>
     	</bbNG:listElement>
-		<bbNG:listElement 
-			label="CourseTitle" 
-			name="CourseTitle"> 
-			<%= cm.getCourseTitle() %>
+		<bbNG:listElement 	label="CourseName" name="CourseName"> 
+			<%= cm.getCourseName() %>
 		</bbNG:listElement>
-		<bbNG:listElement 
-			label="Role-Existing" 
-			name="Role-Existing"> 		
+		<bbNG:listElement 	label="Role-Existing" 	name="Role-Existing"> 		
 			<%= cm.getRoleExisting() %>
-		<bbNG:listElement 
-			label="Role-Expected" 
-			name="Role-Expected"> 		
+		</bbNG:listElement>
+		<bbNG:listElement 	label="Role-Expected" 	name="Role-Expected"> 		
 			<%= cm.getRoleExpected() %>			
 		</bbNG:listElement>
-		<bbNG:listElement 
-			label="Group-Existing" 
-			name="Group-Existing"> 		
+		<bbNG:listElement 	label="Group-Existing" 	name="Group-Existing"> 		
 			<%= cm.getGroupExisting() %>
-		<bbNG:listElement 
-			label="Group-Expected" 
-			name="Group-Expected"> 		
+		</bbNG:listElement>
+		<bbNG:listElement 	label="Group-Expected" 	name="Group-Expected"> 		
 			<%= cm.getGroupExpected() %>			
 		</bbNG:listElement>
-		<bbNG:listElement 
-			label="Valid" 
-			name="Valid"> 		
+		<bbNG:listElement 	label="Valid" 	name="Valid"> 		
 			<%= cm.isValid() %>			
 		</bbNG:listElement>
 

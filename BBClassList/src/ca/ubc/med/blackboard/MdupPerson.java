@@ -29,7 +29,12 @@ public class MdupPerson {
 	
 	public MdupPerson() { 		
 		courses  = new ArrayList<courseStatus>(5);
+		
+		for (int k=0 ; k < 5 ; k++) 
+			courses.add(new courseStatus()); // Add blank courseStatus records
+		
 		LOG.logDebug("Init mdupPerson");
+		System.out.println("Init mdupPerson courses.size=" + courses.size());
 	}
 	
 	/**
@@ -58,6 +63,7 @@ public class MdupPerson {
 	public void setMdupCourseInfo(int year,String courseId,String courseDesc) {
 		
 		LOG.logDebug("setMdupCourseInfo: " +  courseId);
+		System.out.println("setMdupCourseInfo: " +  year + courseId + courseDesc);
 		courseStatus crs = courses.get(year - 1);
 		crs.setCourseId(courseId);
 		crs.setCourseDesc(courseDesc);
@@ -75,10 +81,11 @@ public class MdupPerson {
 		boolean retval = false;
 		
 		LOG.logDebug("setBlackboardInfo: " +  courseId);
+		System.out.println("setBlackboardInfo: " +  courseId);
 		
 		for (int k = 0 ; k < 5 ; k++)   {
-			courseStatus crs = courses.get(k); //(courseStatus)courses[k];
-			if (crs.getCourseId().equals(courseId)) {  // Find the right course.
+			courseStatus crs = courses.get(k); 
+			if (crs.getCourseId() != null && crs.getCourseId().equals(courseId)) {  // Find the right course.
 				crs.setCourseName(courseName);
 				crs.setRoleExisting(role);
 				crs.setGroupExisting(group);
@@ -101,7 +108,7 @@ public class MdupPerson {
 	return retval;
 	}
 	
-	private class courseStatus { 
+	public class courseStatus { 
 		String courseId;
 		String courseName;
 		String courseDesc;
