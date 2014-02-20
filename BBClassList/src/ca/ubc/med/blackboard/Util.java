@@ -62,7 +62,7 @@ public class Util {
 		 user = userLoader.loadByUserName(username);
 	 }
 	 catch (Exception pe) { 
-		 System.out.println(pe.getMessage());
+		 System.out.println("Error getting user object for: " + username + " " + pe.getMessage());
 	 }
 	 return user;
 	}

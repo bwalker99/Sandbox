@@ -74,13 +74,13 @@
     <%
     ca.ubc.med.blackboard.Util util = new ca.ubc.med.blackboard.Util();
     ca.ubc.med.blackboard.LoadMdupPerson load = new ca.ubc.med.blackboard.LoadMdupPerson();
-    ca.ubc.med.blackboard.MdupPerson MP = load.load("medinst3");        		    		
+    ca.ubc.med.blackboard.MdupPerson MP = load.load("bwalk99");        		    		
     
     %>
     <br/><b>From embedded java file - current user:</b><br/>
     <%= util.getCoursesByUserString(sessionUserId) %>
-    <br/><b>Different user - medinst3:</b> <br/>
-    <%= util.getUserCourses("medinst3") %>
+    <br/><b>Different user :</b> <br/>
+    <%= util.getUserCourses("bwalk99") %>
     
     
     <bbNG:inventoryList 

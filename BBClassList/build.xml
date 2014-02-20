@@ -24,9 +24,10 @@
             classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;${bblibs};${resources_dir}/WEB-INF/lib/FomIDMExternal.jar;." 
             includes="ca/ubc/med/blackboard/*" />
     </target>
-	 
-	<buildnumber file="${resources_dir}/_${app}-build.jspf"/>
 	
+	<!--
+	<buildnumber file="${resources_dir}/_${app}-build.jspf"/>
+	-->
 	<!-- Build application specific resources. Typically deploy to a .war file -->	
   <target name="dist" depends="compile" description="generate the distribution" >
 
