@@ -16,7 +16,10 @@ public class LoadMdupPerson {
 		ExternalInterface fomInfo = new ExternalInterface();
 		
 		Util util = new Util();
-		User user = util.getUser(username);  // Blackboard user object		
+		User user = util.getUser(username);  // Blackboard user object	
+		if (user == null) { 
+			System.out.println("Error getting user object for: " + username);
+		}
 
 		String[] mdupCourses = fomInfo.getCourseInfo();
 		
