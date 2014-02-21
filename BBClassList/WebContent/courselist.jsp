@@ -73,11 +73,11 @@
     <!--  Get courses for user and list -->
     <%
        ca.ubc.med.blackboard.Util util = new ca.ubc.med.blackboard.Util();
-       User tempuser = util.getUser("bwalk99");    		
+       User tempuser = util.getUser("medinst1");    		
     %>
     <br/><b>From embedded java file - current user:</b><br/>
     <%= util.getCoursesByUserString(sessionUserId) %>
-    <br/><b>Different user: <i>bwalk99:</i></b> <br/>
+    <br/><b>Different user: <i>medinst1:</i></b> <br/>
     <%= util.getCoursesByUserString(tempuser.getId()) %>
     
     
