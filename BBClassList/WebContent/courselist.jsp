@@ -68,50 +68,17 @@
     Your system role is: <%= sessionUserSystemRoleString %> <br>
     <!-- return User Friendly Role -->
 
-	Your UI friendly System Role is(2): "<%= ca.ubc.med.blackboard.Util.getRoleString( "SYSTEM", sessionUserSYSTEMRole ) %>"<br>
+	Your UI friendly System Role is: "<%= ca.ubc.med.blackboard.Util.getRoleString( "SYSTEM", sessionUserSYSTEMRole ) %>"<br>
     
     <!--  Get courses for user and list -->
     <%
-    ca.ubc.med.blackboard.Util util = new ca.ubc.med.blackboard.Util();
-    ca.ubc.med.blackboard.LoadMdupPerson load = new ca.ubc.med.blackboard.LoadMdupPerson();
-    ca.ubc.med.blackboard.MdupPerson MP = load.load("bwalk99");        		    		
-    
+       ca.ubc.med.blackboard.Util util = new ca.ubc.med.blackboard.Util();
+       User tempuser = util.getUser("bwalk99");    		
     %>
     <br/><b>From embedded java file - current user:</b><br/>
     <%= util.getCoursesByUserString(sessionUserId) %>
-    <br/><b>Different user :</b> <br/>
-    <%= util.getUserCourses("bwalk99") %>
+    <br/><b>Different user: <i>bwalk99:</i></b> <br/>
+    <%= util.getCoursesByUserString(tempuser.getId()) %>
     
-    
-    <bbNG:inventoryList 
-    	collection="<%= MP.getCourses() %>" 
-		objectVar="cm" 
-		className="ca.ubc.med.blackboard.MdupPerson.courseStatus" 
-		emptyMsg="No data to display">
-		
-		<bbNG:listElement label="CourseID" 	name="CourseID" isRowHeader="true">
-    	    	<%= cm.getCourseId() %>
-    	</bbNG:listElement>
-		<bbNG:listElement 	label="CourseName" name="CourseName"> 
-			<%= cm.getCourseName() %>
-		</bbNG:listElement>
-		<bbNG:listElement 	label="Role-Existing" 	name="Role-Existing"> 		
-			<%= cm.getRoleExisting() %>
-		</bbNG:listElement>
-		<bbNG:listElement 	label="Role-Expected" 	name="Role-Expected"> 		
-			<%= cm.getRoleExpected() %>			
-		</bbNG:listElement>
-		<bbNG:listElement 	label="Group-Existing" 	name="Group-Existing"> 		
-			<%= cm.getGroupExisting() %>
-		</bbNG:listElement>
-		<bbNG:listElement 	label="Group-Expected" 	name="Group-Expected"> 		
-			<%= cm.getGroupExpected() %>			
-		</bbNG:listElement>
-		<bbNG:listElement 	label="Valid" 	name="Valid"> 		
-			<%= cm.isValid() %>			
-		</bbNG:listElement>
-
-	</bbNG:inventoryList>
-	
     
 </bbNG:learningSystemPage>

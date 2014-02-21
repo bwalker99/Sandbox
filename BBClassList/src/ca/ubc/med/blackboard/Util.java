@@ -18,6 +18,11 @@ import blackboard.persist.user.UserDbLoader;
 
 public class Util {
 
+	/** 
+	 * Return a list of courses as an html String for a give user
+	 * @param userId BB User Object
+	 * @return String
+	 */
 	public String getCoursesByUserString(Id userId) {
 		String retval = "";
 		try {
@@ -37,8 +42,8 @@ public class Util {
 
 	/** 
 	 * Return a list of courses associated with this user. 
-	 * @param userId
-	 * @return
+	 * @param userId BB User Object
+	 * @return List of BB Course Objects
 	 */
 	protected ArrayList<Course> getCoursesByUser(Id userId) {
 		ArrayList<Course> courses = null;
@@ -53,7 +58,11 @@ public class Util {
 	}
 
 	
-	
+	/**
+	 * Get a BB User Object from a username
+	 * @param username The BB Username
+	 * @return a BB User Object
+	 */
 	public User getUser(String username) {
 	// prefetch user data for quick lookup later
 		User user = null;
@@ -67,68 +76,7 @@ public class Util {
 	 return user;
 	}
 
-	
-	public String getUserCourses(String username) {
-	  String retval = null;
 		
-	 try { 	
-		 UserDbLoader userLoader = UserDbLoader.Default.getInstance();
-		 User user = userLoader.loadByUserName(username);
-		 Id id = user.getId();
-		 retval = getCoursesByUserString(id);
-	 }
-	 catch (Exception pe) { 
-		 System.out.println(pe.getMessage());
-	 }
-	 return retval;
-	}
-	
-/** 
- * TODO - fix placeholder only	
- * @return
- */
-protected String getUserCourseRole(String courseId,Id userId) { 
-	return "Instructor";
-}
-
-/** 
- * TODO - fix placeholder only	
- * @return
- */
-protected String getUserCourseGroup(String courseId,Id userId) { 
-	return "Instructors";
-}
-
-
-private String getCourseRole(String courseId, Id userId) { 
-	String retval = "";
-	String msg = "";
-
-    // get the membership data to determine the User's Role
-	BbPersistenceManager bbPm = PersistenceServiceFactory.getInstance().getDbPersistenceManager();
-	
-    CourseMembership userCourseMembership = null;
-    CourseMembershipDbLoader courseMembershipLoader = null;
-	try {
-		Id internalCourseId = bbPm.generateId(Course.DATA_TYPE,courseId); // convert String courseid to internal format.
-	    courseMembershipLoader = (CourseMembershipDbLoader) bbPm.getLoader(CourseMembershipDbLoader.TYPE);
-		userCourseMembership = courseMembershipLoader.loadByCourseAndUserId(internalCourseId, userId);
-	} catch (KeyNotFoundException e) {
-		// There is no membership record.
-		msg = "There is no membership record. Better check this out:" + e;
-	} catch (PersistenceException pe) {
-		// There is no membership record.
-		msg  = "An error occured while loading the User. Better check this out:" + pe;
-	}
-	CourseMembership.Role userCourseMembershipRole = userCourseMembership.getRole();
-//	String userCourseMembershipRoleStr = userCourseMembershipRole.toString();
-	retval = userCourseMembershipRole.toString();
-	// boolean userCourseMembershipIsAvailable = userCourseMembership.getIsAvailable();
-
-	System.out.println("\n" + retval + "<->" + msg);
-	return retval;
-}
-	
 	
 	/**
 	 * User Friendly String for the type of Role passed in. 
