@@ -25,7 +25,9 @@
             includes="ca/ubc/med/*" />
     </target>
 	 
+	<!--
 	<buildnumber file="${resources_dir}/_${app}-build.jspf"/>
+	-->
 	
 	<!-- Build application specific resources. Typically deploy to a .war file -->	
   <target name="dist" depends="compile" description="generate the distribution" >
@@ -45,12 +47,21 @@
    <target name="deploy" depends="dist" description="deploy class files to local Tomcat">
   	
 	<!--   Deploy war file to local tomcat  -->     
-	<echo>Copy war file to ${tomcat_home}/webapps/</echo>
-	
-	<copy todir="${tomcat_home}/webapps/">
-		<fileset dir="${dist_dir}" includes="${app}.war"/>
-	</copy>
-		
+	<echo>Copy war file to BB9</echo>
+   	
+	<!--   Deploy war file to local tomcat  -->     
+	<echo>Deploy war file BB Server</echo>
+   	  <exec executable="java.exe">
+   	    <arg value="-jar" />
+   	    <arg value="c:/Apps/lib/InstallB2.jar" />
+   	    <arg value="http://142.103.254.131" />
+   	    <arg value="${dist_dir}/${app}.war" />
+   	    <arg value="BBLEARN" />
+   	    <arg value="false" />  <!-- remove old version before installing? -->
+   	    <arg value="false" />  <!-- make block available by default? -->
+   	    <arg value="[value of security key]" />
+   	  </exec>  
+			
   </target>
 
   <target name="clean" description="clean up" >

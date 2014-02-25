@@ -31,6 +31,7 @@ if(bbContext.hasCourseContext()){
  CourseID=<%=course.getCourseId() %><br/>
  Title=<%=course.getTitle() %><br/>
  Description=<%=course.getDescription() %>
+ BatchUID=<%=course.getBatchUid()%> %>
  
 <%
   out.println("<br/>CourseID as Param=" + courseIdParam);
@@ -45,6 +46,9 @@ Course paramCourse = courseLoader.loadById(courseId);
 CourseID=<%=paramCourse.getCourseId() %><br/>
 Title=<%=paramCourse.getTitle() %><br/>
 Description=<%=paramCourse.getDescription() %>
+<% 
+out.println("<br/>Id value of courseId:" + courseId + "<br/> as toString:" + courseId.toString());
+%>
 
   <%}%>
 <p><a href="<%=bbContext.getRequestUrl()%>/view-bbtags.jsp">With BB Taglibs</a> | <a href="view-nocourse.jsp">View No Course</a> </p>
