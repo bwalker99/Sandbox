@@ -41,7 +41,7 @@
 			resourcedestdir="${src_dir}/wsdl" genwsdl="true"
 			keep="true" verbose="true" xendorsed="true">
 		</wsgen>		
-		
+				
 	</target>
 
     <target name="dist" depends="pre-dist" description="generate the distribution">
@@ -59,7 +59,11 @@
             <classes dir="${resources_dir}" includes="*.properties" />
         </war>
     	
-	<!-- Creating jar file for use on CMS server -->
+    	<!-- Creating jar file for use on Client application Person object is shared. -->
+          <jar jarfile="${dist_dir}/lib/middleware.jar" 
+        	   basedir="${build_dir}"
+        	   includes="ca/ubc/med/middleware/data/*.*" >
+        </jar>
 
     </target>
 
@@ -67,8 +71,13 @@
         <!-- Deploy war file on local Tomcat -->
         <echo>Deploying in ${tomcat_home}/webapps</echo>
         <copy file="${dist_dir}/${app}.war" todir="${tomcat_home}/webapps" />
+    	
+        <echo>Copying common jar to client app</echo>
+        <copy file="${dist_dir}/lib/middleware.jar" todir="${clientlib_dir}" />    	
+    	
     </target>
 
+	
     <target name="clean" description="clean up">
         <!-- Delete the ${build_dir} and ${dist_dir} directory trees -->
         <delete dir="${build_dir}" />

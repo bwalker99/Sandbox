@@ -1,0 +1,72 @@
+/* Style sheet for election pages */
+body {
+	color:#000000;
+	font-size:12px;
+	font-family:verdana,helvetica,arial,sans-serif;
+	padding: 10px 10px 10px 10px;
+}
+table, th, tr, td, span {
+	color:#000000;
+	font-size:12px;
+	font-family:verdana,helvetica,arial,sans-serif;
+}
+
+table.box td {
+	border-color: #AAAAAA;
+	white-space: nowrap;
+	padding: 2px 2px 2px 2px;
+	font: 12px verdana, arial, helvetica, sans-serif;
+	text-align:left;
+	border-width: 1px;
+	border-style: solid;	
+	color: #000000
+}
+
+table.box th  {
+	border-color: #AAAAAA;
+	white-space: nowrap;
+	padding: 2px 2px 2px 2px;
+	font: 12px verdana, arial, helvetica, sans-serif;
+	font-weight:bold;
+	text-align:left;
+	border-width: 1px;
+	border-style: solid;	
+	color: #000000;
+	background: #DDDDDD;
+}
+
+
+.formbutton{
+	cursor:pointer;
+	border:outset 1px #f0f0f0;
+	background:#f0f0f0;
+	color:#000000;
+	font-weight:bold;
+	padding: 1px 2px;
+}
+
+hr {
+	margin: 15px 0 5px 5px;
+	width:250px;
+	clear:both;
+} 
+
+a {
+	color:#0000FF;
+	font-family:verdana,helvetica,arial,sans-serif;
+	text-decoration:none;
+}
+
+p {
+	margin: 0 0 6px 0;
+}	
+
+a:hover {
+	color:#990000;
+	text-decoration:underline;
+}
+a:visited {
+	color:#660099;
+	text-decoration:none;
+}
+

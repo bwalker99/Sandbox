@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+   version="2.5">
+
+  <display-name>Banner Web Services Client</display-name>
+  <description>
+     Servlet to access the Banner Web Service.
+  </description>
+
+ <servlet>
+    <servlet-name>DeptServlet</servlet-name>
+    <servlet-class>ca.langara.ws.client.DeptServlet</servlet-class>
+         <init-param>
+            <param-name>destination</param-name>
+            <param-value>mw-dept.jsp</param-value>
+        </init-param>
+    
+  </servlet>
+
+ <servlet>
+    <servlet-name>SubjServlet</servlet-name>
+    <servlet-class>ca.langara.ws.client.SubjectServlet</servlet-class>
+         <init-param>
+            <param-name>destination</param-name>
+            <param-value>mw-subj.jsp</param-value>
+        </init-param>    
+  </servlet>
+
+ <servlet>
+    <servlet-name>PersonServlet</servlet-name>
+    <servlet-class>ca.langara.ws.client.PersonServlet</servlet-class>
+  </servlet>
+
+ <servlet>
+    <servlet-name>CancelledClassServlet</servlet-name>
+    <servlet-class>ca.langara.ws.client.CancelledClassServlet</servlet-class>
+  </servlet>
+
+ <servlet>
+    <servlet-name>CourseServlet</servlet-name>
+    <servlet-class>ca.langara.ws.client.CourseServlet</servlet-class>
+            <init-param>
+            <param-name>destination1</param-name>
+            <param-value>mw-course.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>destination2</param-name>
+            <param-value>mw-cscourse.jsp</param-value>
+        </init-param>
+  </servlet>
+
+
+ <servlet-mapping>
+    <servlet-name>DeptServlet</servlet-name>
+    <url-pattern>/dept</url-pattern>
+  </servlet-mapping>
+
+ <servlet-mapping>
+    <servlet-name>SubjServlet</servlet-name>
+    <url-pattern>/subj</url-pattern>
+  </servlet-mapping>
+
+ <servlet-mapping>
+    <servlet-name>PersonServlet</servlet-name>
+    <url-pattern>/person</url-pattern>
+  </servlet-mapping>
+
+ <servlet-mapping>
+    <servlet-name>CancelledClassServlet</servlet-name>
+    <url-pattern>/cancelledclass</url-pattern>
+  </servlet-mapping>
+
+ <servlet-mapping>
+    <servlet-name>CourseServlet</servlet-name>
+    <url-pattern>/course</url-pattern>
+  </servlet-mapping>
+
+
+</web-app>

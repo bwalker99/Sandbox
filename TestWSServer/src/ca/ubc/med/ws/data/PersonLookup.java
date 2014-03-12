@@ -14,27 +14,37 @@ public class PersonLookup {
 //	static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("PERSON");
 			
 	/**
-	 * Look up people based on pidm OR email.  If both are specified, search by pidm ONLY.
-	 * @param pidm
-	 * @param email
+	 * Look up people based last name. 
+	 * EXAMPLE ONLY : Typically look up from a database. 
+	 * @param lastname of list of users to lookup
 	 * @return a vector of Person objects that meet the criteria
 	 */
-	public Vector<Person> getPersonList(String identifier) {
+	public Vector<Person> getPersonList(String lastname) {
 		Vector<Person> personList = new Vector<Person>();
 
-		Person p1 = new Person();
-		p1.setFirstname("Joe");p1.setLastname("Clark");
-		personList.add(p1);
+		Person p = new Person();
+		p.setFirstname("Joe");p.setLastname("Clark");p.setCwl(lastname);
+		personList.add(p);
 		
-		Person p2 = new Person();
-		p2.setFirstname("Pierre");p2.setLastname("Trudeau");
-		personList.add(p2);
+		p = new Person();
+		p.setFirstname("Christy");p.setLastname("Clark");p.setCwl(lastname);
+		personList.add(p);
+		
+		p = new Person();
+		p.setFirstname("Josephine");p.setLastname("Clark");p.setCwl(lastname);
+		personList.add(p);
 		
 		return personList;
 	}
 	
+	/**
+	 * EXAMPLE ONLY : Typically look up from a database.
+	 * @param identifier What to lookup
+	 * @return Person object 
+	 */
 	public Person getPerson(String identifier) {
 		Person p = new Person();
+		p.setFirstname("Pierre"); p.setLastname("Petroleum");
 		p.setCwl(identifier);
 		return p;
 		}
