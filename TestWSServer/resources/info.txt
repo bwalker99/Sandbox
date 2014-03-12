@@ -1,0 +1,9 @@
+
+Test Web Services Server. Serves up a test Person implementation. 
+
+Deploy this war file. Open a web browser and go to: 
+http://localhost:8080/TestWSServer/person http://localhost:8080/TestWSServer/person?wsdl 
+
+Information on how to deploy endpoint from Tomcat. 
+Note the libraries that must be supplied to Tomcat.
+http://www.mkyong.com/webservices/jax-ws/deploy-jax-ws-web-services-on-tomcat/
