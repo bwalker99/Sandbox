@@ -28,20 +28,6 @@ public interface PersonService {
      * 
      * @param identifier
      * @return
-     *     returns ca.ubc.med.ws.demo.service.Person
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getPerson", targetNamespace = "http://service.demo.ws.med.ubc.ca/", className = "ca.ubc.med.ws.demo.service.GetPerson")
-    @ResponseWrapper(localName = "getPersonResponse", targetNamespace = "http://service.demo.ws.med.ubc.ca/", className = "ca.ubc.med.ws.demo.service.GetPersonResponse")
-    public Person getPerson(
-        @WebParam(name = "identifier", targetNamespace = "")
-        String identifier);
-
-    /**
-     * 
-     * @param identifier
-     * @return
      *     returns java.util.List<ca.ubc.med.ws.demo.service.Person>
      */
     @WebMethod
@@ -49,6 +35,20 @@ public interface PersonService {
     @RequestWrapper(localName = "getPersonList", targetNamespace = "http://service.demo.ws.med.ubc.ca/", className = "ca.ubc.med.ws.demo.service.GetPersonList")
     @ResponseWrapper(localName = "getPersonListResponse", targetNamespace = "http://service.demo.ws.med.ubc.ca/", className = "ca.ubc.med.ws.demo.service.GetPersonListResponse")
     public List<Person> getPersonList(
+        @WebParam(name = "identifier", targetNamespace = "")
+        String identifier);
+
+    /**
+     * 
+     * @param identifier
+     * @return
+     *     returns ca.ubc.med.ws.demo.service.Person
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getPerson", targetNamespace = "http://service.demo.ws.med.ubc.ca/", className = "ca.ubc.med.ws.demo.service.GetPerson")
+    @ResponseWrapper(localName = "getPersonResponse", targetNamespace = "http://service.demo.ws.med.ubc.ca/", className = "ca.ubc.med.ws.demo.service.GetPersonResponse")
+    public Person getPerson(
         @WebParam(name = "identifier", targetNamespace = "")
         String identifier);
 
