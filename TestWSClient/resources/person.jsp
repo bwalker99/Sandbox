@@ -9,7 +9,7 @@
 <body>
 
 <jsp:useBean id="personList" class="java.util.ArrayList" scope="request" />
-<jsp:useBean id="person" class="ca.ubc.med.ws.service.Person" scope="request" />
+<jsp:useBean id="person" class="ca.ubc.med.ws.demo.service.Person" scope="request" />
 
 <h2>TestWS Person Lookup</h2>
 <h3>Search by Identifier</h3>

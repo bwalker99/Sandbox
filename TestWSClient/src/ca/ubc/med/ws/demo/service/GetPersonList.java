@@ -1,5 +1,5 @@
 
-package ca.ubc.med.ws.service;
+package ca.ubc.med.ws.demo.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

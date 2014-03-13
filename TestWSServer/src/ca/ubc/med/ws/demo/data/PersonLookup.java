@@ -1,9 +1,9 @@
-package ca.ubc.med.ws.data;
+package ca.ubc.med.ws.demo.data;
 
-import java.sql.*;
+//import java.sql.*;
 import java.util.Vector;
 
-import ca.ubc.med.middleware.data.Person;
+import ca.ubc.med.ws.middleware.data.Person;
 
 /**
  * @author bwalker

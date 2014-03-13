@@ -1,5 +1,5 @@
 
-package ca.ubc.med.ws.service;
+package ca.ubc.med.ws.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://service.ws.med.ubc.ca/}person" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://service.demo.ws.med.ubc.ca/}person" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

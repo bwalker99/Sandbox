@@ -1,4 +1,4 @@
-package ca.ubc.med.ws.service;
+package ca.ubc.med.ws.demo.service;
 
 import java.util.Vector;
 
@@ -6,8 +6,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-import ca.ubc.med.ws.data.PersonLookup;
-import ca.ubc.med.middleware.data.Person;  // shared object
+import ca.ubc.med.ws.demo.data.PersonLookup;
+import ca.ubc.med.ws.middleware.data.Person;  // shared object
 
 /**
  * The Web Service for Employee Information. Uses PersonLookup to do all the work.

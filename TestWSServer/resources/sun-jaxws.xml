@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
 
-	<endpoint name="PersonService" implementation="ca.ubc.med.ws.service.PersonService"
+	<endpoint name="PersonService" implementation="ca.ubc.med.ws.demo.service.PersonService"
 		url-pattern="/person" />				
 				
 </endpoints>

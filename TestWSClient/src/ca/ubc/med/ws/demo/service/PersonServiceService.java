@@ -1,5 +1,5 @@
 
-package ca.ubc.med.ws.service;
+package ca.ubc.med.ws.demo.service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,19 +17,19 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "PersonServiceService", targetNamespace = "http://service.ws.med.ubc.ca/", wsdlLocation = "http://localhost:8080/TestWSServer/person?wsdl")
+@WebServiceClient(name = "PersonServiceService", targetNamespace = "http://service.demo.ws.med.ubc.ca/", wsdlLocation = "http://localhost:8080/TestWSServer/person?wsdl")
 public class PersonServiceService
     extends Service
 {
 
     private final static URL PERSONSERVICESERVICE_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(ca.ubc.med.ws.service.PersonServiceService.class.getName());
+    private final static Logger logger = Logger.getLogger(ca.ubc.med.ws.demo.service.PersonServiceService.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = ca.ubc.med.ws.service.PersonServiceService.class.getResource(".");
+            baseUrl = ca.ubc.med.ws.demo.service.PersonServiceService.class.getResource(".");
             url = new URL(baseUrl, "http://localhost:8080/TestWSServer/person?wsdl");
         } catch (MalformedURLException e) {
             logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/TestWSServer/person?wsdl', retrying as a local file");
@@ -43,7 +43,7 @@ public class PersonServiceService
     }
 
     public PersonServiceService() {
-        super(PERSONSERVICESERVICE_WSDL_LOCATION, new QName("http://service.ws.med.ubc.ca/", "PersonServiceService"));
+        super(PERSONSERVICESERVICE_WSDL_LOCATION, new QName("http://service.demo.ws.med.ubc.ca/", "PersonServiceService"));
     }
 
     /**
@@ -53,7 +53,7 @@ public class PersonServiceService
      */
     @WebEndpoint(name = "PersonServicePort")
     public PersonService getPersonServicePort() {
-        return super.getPort(new QName("http://service.ws.med.ubc.ca/", "PersonServicePort"), PersonService.class);
+        return super.getPort(new QName("http://service.demo.ws.med.ubc.ca/", "PersonServicePort"), PersonService.class);
     }
 
     /**
@@ -65,7 +65,7 @@ public class PersonServiceService
      */
     @WebEndpoint(name = "PersonServicePort")
     public PersonService getPersonServicePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://service.ws.med.ubc.ca/", "PersonServicePort"), PersonService.class, features);
+        return super.getPort(new QName("http://service.demo.ws.med.ubc.ca/", "PersonServicePort"), PersonService.class, features);
     }
 
 }

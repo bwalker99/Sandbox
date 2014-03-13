@@ -1,4 +1,4 @@
-package ca.ubc.med.ws.client;
+package ca.ubc.med.ws.demo.client;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //import ca.ubc.med.middleware.data.*;
-import ca.ubc.med.ws.service.Person;
+import ca.ubc.med.ws.demo.service.Person;
 
 public class PersonServlet extends HttpServlet {
 	@Override

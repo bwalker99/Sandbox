@@ -1,7 +1,7 @@
-package ca.ubc.med.ws.server;
+package ca.ubc.med.ws.demo.server;
 
 import javax.xml.ws.Endpoint;
-import ca.ubc.med.ws.service.PersonService;
+import ca.ubc.med.ws.demo.service.PersonService;
 
 /**
  * Don't need this. Use for standalone use. Replaced by Tomcat implementation. 

@@ -1,4 +1,4 @@
-package ca.ubc.med.middleware.data;
+package ca.ubc.med.ws.middleware.data;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

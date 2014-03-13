@@ -60,6 +60,6 @@
     	<delete dir="${dist_dir}" />
     	
 		<!-- Delete JAXWS files -->
-		<delete dir="${src_dir}/ca/langara/ws/service" />
+		<delete dir="${src_dir}/ca/ubc/med/ws/service" />
     </target>
 </project>

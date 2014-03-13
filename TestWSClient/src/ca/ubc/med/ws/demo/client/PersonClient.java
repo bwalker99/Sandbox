@@ -1,10 +1,10 @@
-package ca.ubc.med.ws.client;
+package ca.ubc.med.ws.demo.client;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.ws.WebServiceRef;
 
-import ca.ubc.med.ws.service.*;
+import ca.ubc.med.ws.demo.service.*;
 //import ca.ubc.med.middleware.data.*;
 
 /**

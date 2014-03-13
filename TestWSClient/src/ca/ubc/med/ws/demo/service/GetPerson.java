@@ -1,23 +1,22 @@
 
-package ca.ubc.med.ws.service;
+package ca.ubc.med.ws.demo.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getPersonResponse complex type.
+ * <p>Java class for getPerson complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getPersonResponse">
+ * &lt;complexType name="getPerson">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://service.ws.med.ubc.ca/}person" minOccurs="0"/>
+ *         &lt;element name="identifier" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getPersonResponse", propOrder = {
-    "_return"
+@XmlType(name = "getPerson", propOrder = {
+    "identifier"
 })
-public class GetPersonResponse {
+public class GetPerson {
 
-    @XmlElement(name = "return")
-    protected Person _return;
+    protected String identifier;
 
     /**
-     * Gets the value of the return property.
+     * Gets the value of the identifier property.
      * 
      * @return
      *     possible object is
-     *     {@link Person }
+     *     {@link String }
      *     
      */
-    public Person getReturn() {
-        return _return;
+    public String getIdentifier() {
+        return identifier;
     }
 
     /**
-     * Sets the value of the return property.
+     * Sets the value of the identifier property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Person }
+     *     {@link String }
      *     
      */
-    public void setReturn(Person value) {
-        this._return = value;
+    public void setIdentifier(String value) {
+        this.identifier = value;
     }
 
 }

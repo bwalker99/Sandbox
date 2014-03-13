@@ -36,7 +36,7 @@
 		</taskdef>
 
 
-		<wsgen sei="ca.ubc.med.ws.service.PersonService"
+		<wsgen sei="ca.ubc.med.ws.demo.service.PersonService"
 			cp="${build_dir}" destdir="${build_dir}" sourcedestdir="${src_dir}"
 			resourcedestdir="${src_dir}/wsdl" genwsdl="true"
 			keep="true" verbose="true" xendorsed="true">
@@ -62,7 +62,7 @@
     	<!-- Creating jar file for use on Client application Person object is shared. -->
           <jar jarfile="${dist_dir}/lib/middleware.jar" 
         	   basedir="${build_dir}"
-        	   includes="ca/ubc/med/middleware/data/*.*" >
+        	   includes="ca/ubc/med/ws/middleware/data/*.*" >
         </jar>
 
     </target>
@@ -84,7 +84,7 @@
         <delete dir="${dist_dir}" />
     	
 		<!-- Delete JAXWS files -->
-		<delete dir="${src_dir}/ca/langara/ws/service/jaxws" />
+		<delete dir="${src_dir}/ca/ubc/med/ws/service/jaxws" />
         <delete dir="${src_dir}/wsdl" />
     </target>
 
