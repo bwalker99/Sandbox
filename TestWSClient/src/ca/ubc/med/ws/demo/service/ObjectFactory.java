@@ -37,22 +37,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Person }
-     * 
-     */
-    public Person createPerson() {
-        return new Person();
-    }
-
-    /**
-     * Create an instance of {@link GetPersonList }
-     * 
-     */
-    public GetPersonList createGetPersonList() {
-        return new GetPersonList();
-    }
-
-    /**
      * Create an instance of {@link GetPerson }
      * 
      */
@@ -66,6 +50,22 @@ public class ObjectFactory {
      */
     public GetPersonResponse createGetPersonResponse() {
         return new GetPersonResponse();
+    }
+
+    /**
+     * Create an instance of {@link Person }
+     * 
+     */
+    public Person createPerson() {
+        return new Person();
+    }
+
+    /**
+     * Create an instance of {@link GetPersonList }
+     * 
+     */
+    public GetPersonList createGetPersonList() {
+        return new GetPersonList();
     }
 
     /**

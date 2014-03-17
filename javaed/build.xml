@@ -49,9 +49,7 @@
 	    <!-- Delete the ${build} and ${dist} directory trees -->
 	    <delete dir="${build_dir}"/>
 	    <delete dir="${dist_dir}"/>
+  	    <delete dir="bin"/>
   </target>
 	
-    <target name="clean-all" depends="clean">
-        <ant dir="${common_dir}" target="clean" inheritAll="false" />
-    </target>
 </project>
