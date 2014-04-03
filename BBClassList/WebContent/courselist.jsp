@@ -79,6 +79,9 @@
     <%= util.getCoursesByUserString(sessionUserId) %>
     <br/><b>Different user: <i>medinst1:</i></b> <br/>
     <%= util.getCoursesByUserString(tempuser.getId()) %>
+    <br/><b>All Course Roles</b> <br/>
+    <%= util.getCourseRoles() %>
+    
     
     
 </bbNG:learningSystemPage>

@@ -15,6 +15,8 @@ import blackboard.persist.course.*;
 //import blackboard.platform.*;
 import blackboard.platform.persistence.*;    
 import blackboard.persist.user.UserDbLoader;
+import blackboard.data.course.CourseMembership.Role;
+import blackboard.persist.course.CourseMembershipDbLoader;
 
 public class Util {
 
@@ -25,13 +27,23 @@ public class Util {
 	 */
 	public String getCoursesByUserString(Id userId) {
 		String retval = "";
+		
 		try {
 	    CourseDbLoader courseLoader = CourseDbLoader.Default.getInstance();
+	    CourseMembershipDbLoader courseMembershipLoader = CourseMembershipDbLoader.Default.getInstance();
 	    ArrayList<Course> courses = courseLoader.loadByUserId(userId); 
 	    
 	    for (int k=0 ; k < courses.size() ; k++ ) { 
 	    	Course c = courses.get(k);
-	    	retval += "Enrolled in: " + c.getTitle() + "(" + c.getCourseId() + ")<br/>";
+			//CourseMembership courseMembership = new CourseMembership();
+			//courseMembership.setUserId(userId);
+			//courseMembership.setCourseId(c.getId());
+	    	CourseMembership courseMembership = courseMembershipLoader.loadByCourseAndUserId(c.getId(),userId);
+			
+			CourseMembership.Role role = courseMembership.getRole();
+			String ident = role.getIdentifier();
+			
+	    	retval += "Enrolled in: " + c.getTitle() + "(" + c.getCourseId() + ") Role: " + getCourseRoleString(role.getIdentifier()) + "<br/>";
 	    //	getCourseRole(c.getCourseId(),userId);
 	      }
 		}
@@ -77,6 +89,38 @@ public class Util {
 	}
 
 		
+	public String getCourseRoles() { 
+		String retval = "";
+		CourseMembership.Role[] crsrole = CourseMembership.Role.getAllCourseRoles();
+		for (CourseMembership.Role cr : crsrole) 
+			retval += cr.toString() + "<br/>-->getFieldName=" + cr.getFieldName()  + "<br/>-->getIdentifier=" + cr.getIdentifier() 
+			+ "<br/>-->toExternalString=" + cr.toExternalString() + "<br/>";
+		return retval;
+	}
+
+	
+	
+	
+	/**
+	 * User Friendly String for the type of Role passed in. 
+	 * @param type  Type of Role: COURSE or SYSTEM
+	 * @param role  Internal role constant. ie CourseMembership.Role.GRADER
+	 * @return Role as friendly string.
+	 */
+	static public String getCourseRoleString(String type) {
+		String uRole = "*unknown*";
+			// get role based on coursemembershipRole (CourseMembership.Role)
+			if(type.equals("B")) uRole="Course Builder";
+			else if(type.equals("S"))	uRole="Student(Default)";
+			else if(type.equals("G"))	uRole="Grader";
+			else if(type.equals("U"))	uRole="Guest";
+			else if(type.equals("P"))	uRole="Instructor";
+			else if(type.equals("S")) 	uRole="Student";
+			else if(type.equals("T"))	uRole="Teaching Assistant";
+			else if(type.equals("UBC_Secondary_Instructor")) 	uRole = "Secondary Instructor";
+			else if(type.equals("UBC_Auditor")) 	uRole = "Auditor";
+			return uRole;
+		}	
 	
 	/**
 	 * User Friendly String for the type of Role passed in. 
