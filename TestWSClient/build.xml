@@ -18,15 +18,16 @@
 		<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
 			<classpath path="${jaxws_home}/lib/jaxws-tools.jar;"/>
 		</taskdef>
-		
+<!--		
 		<wsimport wsdl="C:/Apps/wsdl/PersonServiceService.wsdl"
 			destdir="${build_dir}" sourcedestdir="${src_dir}" verbose="true" xendorsed="true" >
 		</wsimport>
-<!--		
+-->		
+		
 		<wsimport wsdl="${ws_host}/TestWSServer/person?wsdl"
 			destdir="${build_dir}" sourcedestdir="${src_dir}" verbose="true" xendorsed="true" >
 		</wsimport>
-	-->			
+			
 	</target>
 	
     <target name="compile" depends="wsimport" description="Compile files. ">
