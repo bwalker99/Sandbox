@@ -55,16 +55,18 @@ public void init() {
  */
 
 public static void main(String[] args) {
-	
-
-	
+		
     String endpoint;
     String endpoint_norm = "http://localhost:8080/TestWSServer/person";
     String endpoint_ssl = "https://localhost:8443/TestWSServer/person";
     
+    System.out.println("Usage: DemoTester [SSL | <hostname>]\n");
+    
     endpoint = endpoint_norm;
     if (args.length > 0 && args[0].equalsIgnoreCase("SSL") )
     	endpoint = endpoint_ssl;
+    else if (args.length > 0 && !args[0].equalsIgnoreCase("SSL") )
+    	endpoint = args[0];
 
 	PersonServiceService service = new PersonServiceService();
 	PersonService port = service.getPersonServicePort();

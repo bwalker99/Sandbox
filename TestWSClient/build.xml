@@ -35,7 +35,7 @@
         <!-- NOTE. Handy way to set java version (or compliance) Use the 'target' attribute -->
         <!-- debug=true puts line numbers in error stack dumps. Inflates the code but is handy -->
         <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true"
-            classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;${clientlib_dir}/middleware.jar;." />
+            classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;." />
     </target>
 
     <target name="dist" depends="compile" description="generate the distribution">

@@ -1,12 +1,11 @@
 package ca.ubc.med.ws.middleware.data;
 
-// Not quite sure what the following are used for. Used this definition in a previous version
-//   but works without. 
-//import javax.xml.bind.annotation.XmlRootElement;
-//import ca.ubc.med.middleware.data.DataObject;
-//import java.io.Serializable;
-// @XmlRootElement(name = "Person")
-//public class Person extends DataObject implements Serializable {
+/**
+ * Shared object between server and client. 
+ * Would normally be in a jar file for one program. Replicated here for simplicity
+ * @author rwalker
+ *
+ */
 public class Person {
 
     private String puid; 

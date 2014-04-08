@@ -26,10 +26,6 @@
 
 	<target name="pre-dist" depends="compile">
         <echo>Running wsgen...</echo>
-		<!--
-		wsgen -cp build -d build -s src -r src/wsdl -wsdl -keep -verbose ca.langara.sample.coursews.service.CourseService
-		-->
-
 
 		<taskdef name="wsgen" classname="com.sun.tools.ws.ant.WsGen" >
 			<classpath path="${jaxws_home}/lib/jaxws-tools.jar"/>
@@ -59,12 +55,6 @@
             <classes dir="${resources_dir}" includes="*.properties" />
         </war>
     	
-    	<!-- Creating jar file for use on Client application Person object is shared. -->
-          <jar jarfile="${dist_dir}/lib/middleware.jar" 
-        	   basedir="${build_dir}"
-        	   includes="ca/ubc/med/ws/middleware/data/*.*" >
-        </jar>
-
     </target>
 
     <target name="deploy" depends="dist" description="deploy war file">
