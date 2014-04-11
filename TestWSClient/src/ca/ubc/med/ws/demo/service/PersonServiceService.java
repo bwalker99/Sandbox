@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "PersonServiceService", targetNamespace = "http://service.demo.ws.med.ubc.ca/", wsdlLocation = "http://localhost:8080/TestWSServer/person?wsdl")
+@WebServiceClient(name = "PersonServiceService", targetNamespace = "http://service.demo.ws.med.ubc.ca/", wsdlLocation = "http://ubie:8080/TestWSServer/person?wsdl")
 public class PersonServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class PersonServiceService
         try {
             URL baseUrl;
             baseUrl = ca.ubc.med.ws.demo.service.PersonServiceService.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/TestWSServer/person?wsdl");
+            url = new URL(baseUrl, "http://ubie:8080/TestWSServer/person?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/TestWSServer/person?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://ubie:8080/TestWSServer/person?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         PERSONSERVICESERVICE_WSDL_LOCATION = url;
