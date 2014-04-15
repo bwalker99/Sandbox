@@ -37,27 +37,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPersonListResponse }
+     * 
+     */
+    public GetPersonListResponse createGetPersonListResponse() {
+        return new GetPersonListResponse();
+    }
+
+    /**
      * Create an instance of {@link Person }
      * 
      */
     public Person createPerson() {
         return new Person();
-    }
-
-    /**
-     * Create an instance of {@link GetPersonResponse }
-     * 
-     */
-    public GetPersonResponse createGetPersonResponse() {
-        return new GetPersonResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetPersonList }
-     * 
-     */
-    public GetPersonList createGetPersonList() {
-        return new GetPersonList();
     }
 
     /**
@@ -69,11 +61,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetPersonListResponse }
+     * Create an instance of {@link GetPersonList }
      * 
      */
-    public GetPersonListResponse createGetPersonListResponse() {
-        return new GetPersonListResponse();
+    public GetPersonList createGetPersonList() {
+        return new GetPersonList();
+    }
+
+    /**
+     * Create an instance of {@link GetPersonResponse }
+     * 
+     */
+    public GetPersonResponse createGetPersonResponse() {
+        return new GetPersonResponse();
     }
 
     /**
