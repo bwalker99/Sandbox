@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<manifest>
+  <plugin>
+    <name value= "B2 Template"/>
+    <handle value= "b2-template"/>
+    <description value= "FoM B2 Template"/>
+    <version value= "0.99"/>
+    <requires>
+    	<bbversion value="9.0.0"/>
+    </requires>
+    <vendor>
+      <id value="ubcm"/>
+      <name value="Bob"/>
+      <url value="http://med.ubc.ca/" />
+      <description value="Template Building Block for FoM" />
+    </vendor>
+    <http-actions></http-actions>
+     
+   
+    <module-defs>
+      <module-type ext-ref="b2-template" title="b2-template" uicreatable="true">
+        <jsp>
+          <view>start.jsp</view>
+        </jsp>     
+      </module-type>  
+      <module type="b2-template" isadmin="false" isavailabletocourse="true" useraddable="true" isdeletable="true" title="B2 Template Building Block">
+        <description>B2 Template Building Block</description>
+        <ExtraInfo>
+					<property key="" type=""></property>
+		</ExtraInfo>
+		<module-groups>
+ 			<module-group id="Everyone" /> 
+		</module-groups>
+      </module>
+    </module-defs>
+    
+    
+    <permissions>
+      <permission type="persist" name="Content" actions="create,modify,delete"/>
+      <permission type="attribute" name="user.authinfo" actions="get"/>
+      <permission type="attribute" name="user.personalinfo" actions="get"/>
+    </permissions>
+  </plugin>
+
+</manifest>

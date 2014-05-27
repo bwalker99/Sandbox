@@ -1,7 +1,18 @@
 <%@ taglib uri="/bbNG" prefix="bbNG"%>
 <%@ page language="java" import="blackboard.persist.course.*,blackboard.data.course.*,blackboard.persist.*,blackboard.platform.persistence.*" %>
+<%@ page import="com.spvsoftwareproducts.blackboard.utils.B2Context"  errorPage="../error.jsp"%>
+
 <bbNG:includedPage>
 <h2>Hello BB World</h2>
+    <%   
+    B2Context b2Context = new B2Context(request);
+    String tabId = b2Context.getRequestParameter("tab_tab_group_id", "");
+    String launchUrl1 = b2Context.getPath() + "module/view-bbtags.jsp?tab=" + tabId; 
+    pageContext.setAttribute("launchUrl1", launchUrl1);
+    String launchUrl2 = b2Context.getPath() + "module/view-nocourse.jsp?tab=" + tabId; 
+    pageContext.setAttribute("launchUrl2", launchUrl2);
+
+%>
 
 <% 
 if (bbContext.getUser().getUserName().equalsIgnoreCase("guest")){ 	
@@ -51,6 +62,6 @@ out.println("<br/>Id value of courseId:" + courseId + "<br/> as toString:" + cou
 %>
 
   <%}%>
-<p><a href="<%=bbContext.getRequestUrl()%>/view-bbtags.jsp">With BB Taglibs</a> | <a href="view-nocourse.jsp">View No Course</a> </p>
+<p><a href="${launchUrl1}">With BB Taglibs</a> | <a href="${launchUrl2}">View No Course</a> </p>
 
 </bbNG:includedPage>
