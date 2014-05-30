@@ -49,7 +49,8 @@
    	  <exec executable="java.exe">
    	    <arg value="-jar" />
    	    <arg value="c:/Apps/lib/InstallB2.jar" />
-   	    <arg value="http://142.103.254.131" />
+<!--   	    <arg value="http://142.103.254.131" />  -->
+   	    <arg value="http://192.168.0.114" />
    	    <arg value="${dist_dir}/${app}.war" />
    	    <arg value="BBLEARN" />
    	    <arg value="false" />  <!-- remove old version before installing? -->

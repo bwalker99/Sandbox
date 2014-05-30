@@ -93,8 +93,7 @@ public class Util {
 		String retval = "";
 		CourseMembership.Role[] crsrole = CourseMembership.Role.getAllCourseRoles();
 		for (CourseMembership.Role cr : crsrole) 
-			retval += cr.toString() + "<br/>-->getFieldName=" + cr.getFieldName()  + "<br/>-->getIdentifier=" + cr.getIdentifier() 
-			+ "<br/>-->toExternalString=" + cr.toExternalString() + "<br/>";
+			retval += cr.toString() + " Name=" + cr.getFieldName()  + " Identifier=" + cr.getIdentifier() +  "<br/>" ;
 		return retval;
 	}
 
