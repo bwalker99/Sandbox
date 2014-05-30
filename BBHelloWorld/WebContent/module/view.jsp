@@ -25,7 +25,10 @@ You are logged in as: <%=bbContext.getUser().getUserName() %>.<br/>
 First name: <%=bbContext.getUser().getGivenName() %><br/>
 Last name: <%=bbContext.getUser().getFamilyName() %><br/>
 Student Number: <%=bbContext.getUser().getStudentId() %><br/>
-Email Address: <%=bbContext.getUser().getEmailAddress() %><br/><br/>
+Email Address: <%=bbContext.getUser().getEmailAddress() %><br/>
+System Role - Display Name: <%=bbContext.getUser().getSystemRole().getDisplayName() %><br/>
+System Role - Identifier: <%=bbContext.getUser().getSystemRoleIdentifier() %><br/><br/>
+
 Request URL: <%=bbContext.getRequestUrl()%><br/> 
 
 <%}%>
