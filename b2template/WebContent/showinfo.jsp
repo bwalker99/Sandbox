@@ -22,7 +22,6 @@
 	String page_title = "UBC FoM B2 Template";   
 %>
 
-
 <bbNG:learningSystemPage ctxId="ctx" title="<%= page_title %>">
     <!-- Start Breadcrumb Navigation --> 
     <!-- End Breadcrumb Navigation -->
