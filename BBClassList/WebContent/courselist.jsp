@@ -60,7 +60,7 @@
         <%= page_title %>
     	</bbNG:pageTitleBar>
     </bbNG:pageHeader>
-    List Session User and Session Course Information. <br>
+    List Session User and Session Course Information. v1.0.1<br>
     Hi <%= sessionUserGivenName %> <%= sessionUserFamilyName %>, <br>
     Your User Name is: <%= sessionUserName %> <br>
     Your email address is: <%= sessionUserEmailAddress %> <br>
@@ -81,6 +81,10 @@
     <%= util.getCoursesByUserString(tempuser.getId()) %>
     <br/><b>All Course Roles</b> <br/>
     <%= util.getCourseRoles() %>
+    
+    <br/><b>Institution Roles</b> <br/>
+    <%= util.getPortalRoles(sessionUserId) %>
+    
     
     
     

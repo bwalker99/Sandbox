@@ -18,6 +18,10 @@ import blackboard.persist.user.UserDbLoader;
 import blackboard.data.course.CourseMembership.Role;
 import blackboard.persist.course.CourseMembershipDbLoader;
 
+import blackboard.persist.role.PortalRoleDbLoader;
+import blackboard.data.role.*;
+
+
 public class Util {
 
 	/** 
@@ -93,11 +97,31 @@ public class Util {
 		String retval = "";
 		CourseMembership.Role[] crsrole = CourseMembership.Role.getAllCourseRoles();
 		for (CourseMembership.Role cr : crsrole) 
-			retval += cr.toString() + " Name=" + cr.getFieldName()  + " Identifier=" + cr.getIdentifier() +  "<br/>" ;
+			retval += cr.toString() + "<br/>-->Name=" + cr.getFieldName()  + " Identifier=" + cr.getIdentifier() +  "<br/>" ;
 		return retval;
 	}
 
 	
+	public String getPortalRoles(Id userId) { 
+		String retval = "";
+		try {
+			PortalRoleDbLoader portalLoader = PortalRoleDbLoader.Default.getInstance();
+			PortalRole prole = portalLoader.loadPrimaryRoleByUserId(userId);
+			if (prole != null)
+				retval = "Primary Role: " + prole.getRoleName() + " " + prole.getRoleID();
+			ArrayList<PortalRole> sroles = portalLoader.loadSecondaryRolesByUserId(userId);
+			
+			for (PortalRole pr : sroles) { 
+				retval += "<br/>Secondary Role: " + pr.getRoleName() + " " + pr.getRoleID();
+			}									
+		}
+		
+		catch (Exception e) { 
+			e.printStackTrace();
+		}		
+		
+		return retval;		
+	}
 	
 	
 	/**
