@@ -18,11 +18,10 @@
 
     <target name="compile" depends="init" description="Compile files... ">
         <!-- Compile the java code from ${src_dir} into ${build_dir} -->
-        <!-- NOTE. Handy way to set java version (or compliance) Use the 'target' attribute ie:  target="1.6" -->
         <!-- debug=true puts line numbers in error stack dumps. Inflates the code but is handy -->
         <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true" 
-            classpath="${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib/log4j-1.2.15.jar;." 
-            includes="ca/ubc/med/*" />
+            classpath="${buildlib_dir}/servlet-api.jar;${bblibs};${buildlib_dir}/slf4j-api-1.7.5.jar;${buildlib_dir}/b2context-1.3.00.jar;." 
+            includes="ca/ubc/med/blackboard/b2template/*,ca/ubc/med/blackboard/b2template/data/*" />
     </target>
 	 
 	<!--
@@ -37,8 +36,8 @@
 		<fileset dir="${resources_dir}" includes="*.jsp,*.jspf,*.html,*.css,*.js"/>
     <!--  	<zipfileset dir="${resources_dir}/images" prefix="images"/>   -->
     <!--	<zipfileset dir="${resources_dir}/module" prefix="module"/> -->
-	    <classes dir="${build_dir}" includes="**/*.class"/>  
-        <classes dir="${resources_dir}" includes="*.properties" />    
+	    <classes dir="${build_dir}" includes="**/*.class"/>      
+       	<classes dir="${resources_dir}" includes="logback.xml" />
 	    <webinf dir="${resources_dir}/WEB-INF" includes="**/*" />
     </war>
   	

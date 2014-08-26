@@ -11,7 +11,9 @@ public class MyBbCourse {
 	private String courseName;
 	private String courseId;
 	private String description;
-	private String roleIdentifier;  // The BB Identifier for the user's role in this course. 
+	private String roleIdentifier;  // The BB Identifier for the user's role in this course.
+	private String role;  			// String description of user's course role.
+	
 	public String getCourseName() {
 		return courseName;
 	}
@@ -36,6 +38,10 @@ public class MyBbCourse {
 	public void setRoleIdentifier(String roleIdentifier) {
 		this.roleIdentifier = roleIdentifier;
 	}
-	
-
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

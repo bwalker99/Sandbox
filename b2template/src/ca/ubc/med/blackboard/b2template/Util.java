@@ -19,7 +19,8 @@ import blackboard.persist.course.*;
 
 public class Util {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger( GetInfo.class );
+	private static final Logger LOGGER = LoggerFactory.getLogger( GetInfoServlet.class );
+	public static String VERSION = "1.0.1";       // Handy.
 	
 	/**
 	 * Get a BB User object based on the lms username
@@ -48,6 +49,7 @@ public class Util {
 	 * @return List of Course objects. 
 	 */
 	protected ArrayList<Course> getCoursesByUser(Id userId) {
+		System.out.println("Getting courses by userid: " + userId);
 		ArrayList<Course> courses = null;
 		try {
 	      CourseDbLoader courseLoader = CourseDbLoader.Default.getInstance();
@@ -97,7 +99,7 @@ public class Util {
 	 * @param type The CourseMembership.Role.getIdentifier() value
 	 * @return Role as friendly string. For example: Instructor, Auditor
 	 */
-	private String getCourseRoleString(String type) {
+	public String getCourseRoleString(String type) {
 		String uRole = "*unknown*";
 			// get role based on coursemembershipRole (CourseMembership.Role)
 			if(type.equals("B")) uRole="Course Builder";
