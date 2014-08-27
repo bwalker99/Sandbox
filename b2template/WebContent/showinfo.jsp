@@ -61,14 +61,6 @@ Enrolled Courses:<br/>
 		<bbNG:listElement label="CourseID" 	name="CourseID" >
     	    	${clist.courseId}
     	</bbNG:listElement>
-
-		<bbNG:listElement label="Course Name" 	name="CourseName">
-    	    	${lastlogin}
-    	</bbNG:listElement>
-    	    	
-    	<bbNG:listElement 	label="Course Desc" name="CourseDesc"> 
-			    ${clist.description}
-		</bbNG:listElement>
     	
     	<bbNG:listElement 	label="Course Role" 	name="CourseRole"> 		
 				${clist.role}
