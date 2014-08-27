@@ -85,14 +85,14 @@ public class GetInfoServlet extends HttpServlet{
 		    	Course c = courses.get(k);
 		    	
 		    	MyBbCourse myc = new MyBbCourse();
-		    	myc.setDescription(c.getDescription());
+		    	myc.setDescription(setNoneIfBlank(c.getDescription()));
 		    	myc.setCourseId(c.getCourseId());
 		    	myc.setCourseName(c.getDisplayTitle());
 		    	myc.setRoleIdentifier(util.getUserCourseRole(c.getId(), user.getId()));
 		    	myc.setRole(util.getCourseRoleString(myc.getRoleIdentifier()));
 		    	
 		    	myCourses.add(myc);
-		    	LOGGER.debug("Coursename/ID: {} {}",c.getDisplayTitle(),c.getCourseId());
+		    	LOGGER.debug("Coursename/ID/Description: {} {} {}",c.getDisplayTitle(),c.getCourseId(),c.getDescription());
 		    }
 		  
 		  // This passes the BB User object the the List of MyBbCourse objects to the showinfo.jsp page.
@@ -111,5 +111,15 @@ public class GetInfoServlet extends HttpServlet{
 		    rd.forward (request, response);
 	  }
 	  
-	
+	/**
+	 *  Set a parameter to *none* if it is blank. bbNG Inventory List does not like blank fields...
+	 * @param s
+	 * @return
+	 */
+	private String setNoneIfBlank(String s) {
+		String retval = "*none*";
+		if (s != null && s.length() > 0)
+			retval = s;
+		return retval;
+	}
 }

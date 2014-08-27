@@ -1,0 +1,75 @@
+<project name="b2template" default="deploy" basedir=".">
+    <description>
+      
+    </description>
+ 
+    <!-- set global properties for this build -->
+    <property environment="env" />
+    <property file="build.properties" />
+    <property name="app" value="b2template"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build_dir}"/>
+    <mkdir dir="${dist_dir}"/>  	
+  </target>
+
+    <target name="compile" depends="init" description="Compile files... ">
+        <!-- Compile the java code from ${src_dir} into ${build_dir} -->
+        <!-- debug=true puts line numbers in error stack dumps. Inflates the code but is handy -->
+        <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true" 
+            classpath="${buildlib_dir}/servlet-api.jar;${bblibs};${buildlib_dir}/slf4j-api-1.7.5.jar;${buildlib_dir}/b2context-1.3.00.jar;." 
+            includes="ca/ubc/med/blackboard/b2template/*,ca/ubc/med/blackboard/b2template/data/*" />
+    </target>
+	 
+	<!--
+	<buildnumber file="${resources_dir}/_${app}-build.jspf"/>
+	-->
+	
+	<!-- Build application specific resources. Typically deploy to a .war file -->	
+  <target name="dist" depends="compile" description="generate the distribution" >
+
+    <!-- Create war file for distribution -->
+    <war destfile="${dist_dir}/${app}.war" webxml="${resources_dir}/WEB-INF/web.xml">
+		<fileset dir="${resources_dir}" includes="*.jsp,*.jspf,*.html,*.css,*.js"/>
+    <!--  	<zipfileset dir="${resources_dir}/images" prefix="images"/>   -->
+    <!--	<zipfileset dir="${resources_dir}/module" prefix="module"/> -->
+	    <classes dir="${build_dir}" includes="**/*.class"/>      
+       	<classes dir="${resources_dir}" includes="logback.xml" />
+	    <webinf dir="${resources_dir}/WEB-INF" includes="**/*" />
+    </war>
+  	
+  </target>
+	
+   <target name="deploy" depends="dist" description="deploy class files to local Tomcat">
+  	
+	<!--   Deploy war file to local tomcat  -->     
+	<echo>Copy war file to BB9</echo>
+   	
+	<!--   Deploy war file to local tomcat  -->     
+	<echo>Deploy war file BB Server</echo>
+   	  <exec executable="java.exe">
+   	    <arg value="-jar" />
+   	    <arg value="c:/Apps/lib/InstallB2.jar" />
+		<arg value="http://192.168.0.120" />
+   	    <arg value="${dist_dir}/${app}.war" />
+   	    <arg value="BBLEARN" />
+   	    <arg value="false" />  <!-- remove old version before installing? -->
+   	    <arg value="false" />  <!-- make block available by default? -->
+   	    <arg value="[value of security key]" />
+   	  </exec>  
+			
+  </target>
+
+  <target name="clean" description="clean up" >
+	    <!-- Delete the ${build} and ${dist} directory trees -->
+	    <delete dir="${build_dir}"/>
+	    <delete dir="${dist_dir}"/>
+  </target>
+	
+    <target name="clean-all" depends="clean">
+        <ant dir="${common_dir}" target="clean" inheritAll="false" />
+    </target>
+</project>

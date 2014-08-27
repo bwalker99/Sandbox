@@ -46,7 +46,7 @@
 	
 <h2>UBC FoM B2 Template</h2>	
 You are logged in as: ${myusername}<br/> <!-- Note. This displays the java variable defined above. -->
-(Can also display with java variables as: <%= givenName %> <%= familyName %>)<br/>
+(Can also display with java variables as: <%= givenName %>&nbsp;<%= familyName %>)<br/>
 Click submit below for more information. 
 
     <bbNG:form action="${launchUrl}" method="POST" id="id_userform" name="UserForm" >
@@ -56,11 +56,11 @@ Click submit below for more information.
      <bbNG:step title="Click for more information">
 
       <bbNG:dataElement  label="Username">
-        <bbNG:textElement name="username" size="50" value="${username}" displayOnly="true"/> <!-- This displays the jstl variable. -->
+        <bbNG:textElement name="username" value="${username}" displayOnly="true"/> <!-- This displays the jstl variable. -->
       </bbNG:dataElement>
       
       <bbNG:dataElement  label="Userdata">
-        <bbNG:textElement name="userdata" size="50" value="Please enter a phrase to process"/> <!--  This will be passed to the servlet for processing -->
+        <bbNG:textElement name="userdata" value="Phrase to process"/> <!--  This will be passed to the servlet for processing -->
       </bbNG:dataElement>     
                 
     </bbNG:step>

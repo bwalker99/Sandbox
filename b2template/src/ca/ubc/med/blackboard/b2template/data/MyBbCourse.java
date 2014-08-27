@@ -30,7 +30,7 @@ public class MyBbCourse {
 		return description;
 	}
 	public void setDescription(String courseDesc) {
-		this.description = courseDesc;
+		    description = courseDesc;
 	}
 	public String getRoleIdentifier() {
 		return roleIdentifier;

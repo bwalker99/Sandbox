@@ -36,10 +36,10 @@
    %>
 	
 ${message}<br/>	
-Logged in information using BB User Object:<br/>
-<table>
+<h3>Logged in information using BB User Object:</h3>
+<table border="1">
 <tr><td align="right">UserName:</td><td>${user.userName}</td></tr>
-<tr><td align="right">Name:</td><td>${user.givenName} ${user.familyName}</td></tr>
+<tr><td align="right">Name:</td><td>${user.givenName}&nbsp;${user.familyName}</td></tr>
 <tr><td align="right">Batch UID:</td><td>${user.batchUid}</td></tr>
 <tr><td align="right">Email:</td><td>${user.emailAddress}</td></tr>
 <tr><td align="right">Available flag:</td><td>${user.isAvailable}</td></tr>
@@ -47,35 +47,31 @@ Logged in information using BB User Object:<br/>
 <tr><td align="right">Last Login Date:</td><td>${lastlogin}</td></tr> <!--  as String -->
 </table>
 <br/>
-<% 
-System.out.println("Displayed user info. About to display course");
-%>
-Enrolled Courses:<br/>
 
-<bbNG:inventoryList 
-    	collection="${mycourses}" 
-		objectVar="clist" 
-		className="ca.ubc.med.blackboard.b2template.data.MyBbCourse" 
-		emptyMsg="No data to display">
-		
-		<bbNG:listElement label="CourseID" 	name="CourseID" >
-    	    	${clist.courseId}
-    	</bbNG:listElement>
-    	
-    	<bbNG:listElement 	label="Course Role" 	name="CourseRole"> 		
-				${clist.role}
-		</bbNG:listElement>
-		
-		<bbNG:listElement 	label="Role Identifier" 	name="RoleIdentifier"> 		
-			${clist.roleIdentifier}			
-		</bbNG:listElement>
-    	
-    	
-	</bbNG:inventoryList>
+<h4>Enrolled Courses:</h4>
 
+<bbNG:inventoryList collection="${mycourses}" objectVar="el" 
+                    className="ca.ubc.med.blackboard.b2template.data.MyBbCourse"> 
+	<bbNG:listElement label="Course Id" name="courseid" isRowHeader="true"> 
+		${el.courseId}
+	</bbNG:listElement>           
+	<bbNG:listElement label="Course Name" name="coursename"> 
+		${el.courseName}
+	</bbNG:listElement>	
+	<bbNG:listElement label="Description" name="description"> 
+		${el.description}
+	</bbNG:listElement>
+		<bbNG:listElement label="Role" name="role"> 
+		${el.role}
+	</bbNG:listElement>           
+	<bbNG:listElement label="Role Ident" name="roleident"> 
+		${el.roleIdentifier}
+	</bbNG:listElement>           
+	           
+</bbNG:inventoryList> 
 
-
-<table>
+<!-- 
+<table border="1">
  <tr><th>CourseId</th><th>CourseName</th><th>Description</th><th>Role</th><th>Role Ident</th></tr>
   <c:forEach var="clist" items="${mycourses}" >
   <tr>
@@ -85,8 +81,8 @@ Enrolled Courses:<br/>
  </c:forEach>       
 </table>
 <br/>
-
-Userdata supplied information: ${userdata}<br/> <br/>
+ -->
+<b>Userdata supplied information: </b>${userdata}<br/> <br/>
 <a href="${returnUrl}">Return to start page </a><br/><br/>
 
 <!-- Display the B2 version -->
