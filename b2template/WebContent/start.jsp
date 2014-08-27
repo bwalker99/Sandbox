@@ -38,16 +38,17 @@
     String familyName = sessionUser.getFamilyName();
     
     // set it as a page attribute to be available later in this page.
-    // Recall that this is embedded java code, so we must provide a way of passing this variable to the js
+    // Recall that this is embedded java code, so we must provide a way of passing this variable to the jsp
     pageContext.setAttribute("myusername",givenName + " " + familyName + "(" + userName + ")");
     pageContext.setAttribute("username",userName);
     
 %>
 	
 <h2>UBC FoM B2 Template</h2>	
-You are logged in as: ${myusername}<br/> <!-- Note. This displays the java variable defined above. -->
-(Can also display with java variables as: <%= givenName %>&nbsp;<%= familyName %>)<br/>
+You are logged in as: ${myusername}<br/> <!-- Note. This displays the variable defined above. -->
+(Can also display with java variables in the jsp: <%= givenName %>&nbsp;<%= familyName %>)<br/>
 Click submit below for more information. 
+<!-- The following acts just like a normal web form. Will post to servlet defined in web.xml as 'GetInfo' -->
 
     <bbNG:form action="${launchUrl}" method="POST" id="id_userform" name="UserForm" >
 
@@ -56,11 +57,11 @@ Click submit below for more information.
      <bbNG:step title="Click for more information">
 
       <bbNG:dataElement  label="Username">
-        <bbNG:textElement name="username" value="${username}" displayOnly="true"/> <!-- This displays the jstl variable. -->
+        <bbNG:textElement name="username" value="${username}" displayOnly="true"/> <!-- Pass value to servlet -->
       </bbNG:dataElement>
       
       <bbNG:dataElement  label="Userdata">
-        <bbNG:textElement name="userdata" value="Phrase to process"/> <!--  This will be passed to the servlet for processing -->
+        <bbNG:textElement name="userdata" value="Phrase to process"/> <!--  Editable value to pass to the servlet -->
       </bbNG:dataElement>     
                 
     </bbNG:step>

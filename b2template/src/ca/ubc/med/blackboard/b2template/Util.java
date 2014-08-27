@@ -67,10 +67,10 @@ public class Util {
 	
 	
 	/** 
-	 * Get the user's Course Role. Returned as a nice String. 
+	 * Get the user's Course Role Identifier as defined in BB 
 	 * @param courseId The Course pk ID
 	 * @param userId The User ID
-	 * @return User's course role as a String. eg 'Instructor'. 
+	 * @return User's course role identifier 
 	 */
 	public String getUserCourseRole(Id courseId, Id userId) { 
 		String retval = "";

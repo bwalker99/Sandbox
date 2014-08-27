@@ -55,6 +55,7 @@ public class GetInfoServlet extends HttpServlet{
 		  String username = request.getParameter("username");
 		  LOGGER.debug("Getting information for: {}",username);
 		  
+		  // Get the userdata field as passed to us by the calling page.
 		  String userdata = request.getParameter("userdata");
 		  LOGGER.debug("Userdata passed in: {}",userdata);
 		  
@@ -65,18 +66,19 @@ public class GetInfoServlet extends HttpServlet{
 			  message = "Error getting user object: null";
 		  }
 		  else 
-			  LOGGER.debug("Got user object: {}",user.getUserName());
-
-		  ArrayList<Course> courses = new ArrayList<Course>();  
+			  LOGGER.debug("Got user object: {}",user.getUserName());  
 		  
 		  // Get a list of BB courses the user is enrolled in.
 		  // this uses the supplied Blackboard bean:  blackboard.data.course.Course;
+		  
+		  ArrayList<Course> courses = new ArrayList<Course>();
 		  if (user != null)
 			  courses = util.getCoursesByUser(user.getId());
 		  
 		  // Create a blank list of MyBbCourse objects.
 		  // This is our own defined course bean: ca.ubc.med.blackboard.b2template.data.MyBbCourse
-		  // Our own course bean has all the Blackboard info, plus the user's course role in that course. 
+		  // Our own course bean has some of the Blackboard info, plus the user's course role in that course.
+		  
 		  ArrayList<MyBbCourse> myCourses = new ArrayList<MyBbCourse>();
 		  
 		  // Go through all the users BB Course and create a myBbCourses object from each course.
@@ -99,7 +101,10 @@ public class GetInfoServlet extends HttpServlet{
 		  request.setAttribute("user",user);
 		  request.setAttribute("mycourses",myCourses);
 		  request.setAttribute("userdata",userdata.toUpperCase());  // pass back user data upshifted, as an example.
-		  request.setAttribute("message",message); 
+		  request.setAttribute("message",message);
+		  
+		  // Get Last login date as a string. It's an ugly format in the User object. 
+		  // Probably a better way of doing this.
 		  request.setAttribute("lastlogin", user.getLastLoginDate().getTime().toString());
 		   
 		  // Forward (pass control) to the jsp page using the concept of 'java servlet forwarding'
