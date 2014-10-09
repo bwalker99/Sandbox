@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-platform.jar"/>
 	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-cms-admin.jar"/>
 	<classpathentry kind="lib" path="C:/Data/repository/fomidm/dist/lib/FomIDMExternal.jar"/>
+	<classpathentry kind="lib" path="C:/Apps/lib/bb/bb-bbxythos.jar"/>
+	<classpathentry kind="lib" path="C:/Apps/lib/bb/xsscore.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -10,8 +10,8 @@
 	  </requires>
 	  <vendor>
 	    <id value="bob"/>
-	    <name value="Learning BB Classlists"/>
-	    <description value="Learning BB Classlists"/>
+	    <name value="BB Classlist Demo"/>
+	    <description value="BB Classlist Demo"/>
 	  </vendor>
 	  <http-actions>
 		<config value=""/>
@@ -21,7 +21,7 @@
 	    <application 
 	      handle="BBClassList" 
   	      type="shared"
-	      name="BBClasslist: Building Block template">
+	      name="BBClasslist: Building Block Demo">
 	    <description lang="en_US">
  		  BB Class List 
   		</description>
@@ -42,13 +42,13 @@
 	  </application>
 	</application-defs>
 	    <module-defs>
-      <module-type ext-ref="bob-courselist-module" title="bob-courselist-module" uicreatable="true">       
+      <module-type ext-ref="bob-classlist-module" title="bob-classlist-module" uicreatable="true">       
         <jsp>
           <view>courselist.jsp</view>
         </jsp>
       </module-type>
-      <module type="bob-courselist-module" isadmin="false" isavailabletocourse="true" useraddable="true" isdeletable="true" title="BB CourseList - module">
-        <description>plugin.module.description</description>
+      <module type="bob-classlist-module" isadmin="false" isavailabletocourse="true" useraddable="true" isdeletable="true" title="BB ClassList - module">
+        <description>Demonstration ClassList and more</description>
         <ExtraInfo />
         	<module-groups>
  			<module-group id="Everyone" /> 

@@ -1,17 +1,4 @@
 <%
-/*
-  file:		helloworld.jsp
-  project:	HelloWorld_3b
-  description: 
-  	Building Blocks Getting Started Guide: Identifying and Listing Course Memberships
-  author:	Mark O'Neil
-  date:		2006-01-25
-  version:	1.0.0
-  version history:
-  	date : version : note
-  	2006-01-23 : 1.0.0 : created(mo)
-  	2010-08-12 : 2.0.0 : updated for NG (smh)
-*/
 %><%@ page	language="java" 
 		import="java.util.*,
 		        blackboard.base.*,
@@ -25,17 +12,16 @@
 				blackboard.platform.persistence.*"          
 		pageEncoding="UTF-8"
 %>
+<%@page import="com.spvsoftwareproducts.blackboard.utils.B2Context" %>
+
 	<%@ taglib uri="/bbNG" prefix="bbNG" %>
 <%
 	String iconUrl = "/images/ci/icons/bookopen_u.gif"; 
-	String page_title = "BBCourseList: Identifying and Listing Courses";
-	String msg = null;
-	String EnrDateStr="";
-	
-
-    
+	String page_title = "BBCourseList: Identifying and Listing Courses";    
 	%>
-	<bbNG:learningSystemPage ctxId="ctx" title="<%= page_title %>">
+	
+	<bbNG:includedPage ctxId="ctx">
+	
 	<%
 	//Get a User instance via the page context
 	User sessionUser = ctx.getUser();
@@ -48,19 +34,13 @@
     String sessionUserBatchID = sessionUser.getBatchUid();
     User.SystemRole sessionUserSYSTEMRole = sessionUser.getSystemRole();
     String sessionUserSystemRoleString = sessionUserSYSTEMRole.toString();
- 
+     
  	%>
-    <!-- Start Breadcrumb Navigation --> 
-        <bbNG:breadcrumbBar environment="CTRL_PANEL"  navItem="control_panel">
-            <bbNG:breadcrumb>Hello World</bbNG:breadcrumb>
-        </bbNG:breadcrumbBar>
-    <!-- End Breadcrumb Navigation -->
     <bbNG:pageHeader>	
-    	<bbNG:pageTitleBar iconUrl="<%=iconUrl%>">
-        <%= page_title %>
-    	</bbNG:pageTitleBar>
+    	<bbNG:pageTitleBar iconUrl="<%=iconUrl%>"> <%= page_title %></bbNG:pageTitleBar>
     </bbNG:pageHeader>
-    List Session User and Session Course Information. v1.0.1<br>
+    
+    List Session User and Session Course Information. v1.0.2<br>
     Hi <%= sessionUserGivenName %> <%= sessionUserFamilyName %>, <br>
     Your User Name is: <%= sessionUserName %> <br>
     Your email address is: <%= sessionUserEmailAddress %> <br>
@@ -79,13 +59,27 @@
     <%= util.getCoursesByUserString(sessionUserId) %>
     <br/><b>Different user: <i>medinst1:</i></b> <br/>
     <%= util.getCoursesByUserString(tempuser.getId()) %>
+     
     <br/><b>All Course Roles</b> <br/>
-    <%= util.getCourseRoles() %>
-    
+     <%= util.getCourseRoles() %>
+
     <br/><b>Institution Roles</b> <br/>
     <%= util.getPortalRoles(sessionUserId) %>
+     -->
+    <br/><b>File Listing for year1</b> <br/>
+    <pre>
+    <%= util.showDirectoryContents("/institution/UBC_Vancouver/Medicine/mdup/year1",1) %>
+    </pre>
+    <hr/>
+    <pre>
+    <%= util.showDirectoryContents("/institution/UBC_Vancouver/Medicine/common/portal",1) %>
+    </pre>
+    
+    <br/><br/>
+  Other pages: <a href="classlist.jsp">Original Classlist page</a> 
+    | <a href="helloworld.jsp">Original HelloWorld page</a>
+    | <a href="filelist.jsp">FileList</a>
+  
     
     
-    
-    
-</bbNG:learningSystemPage>
+</bbNG:includedPage>

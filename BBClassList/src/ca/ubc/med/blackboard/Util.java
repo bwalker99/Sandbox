@@ -5,6 +5,8 @@ import java.util.List;
 
 import blackboard.data.user.*;
 import blackboard.data.course.*;
+import blackboard.data.content.*;
+
 //import blackboard.base.*;
 //import blackboard.data.*;
 //import blackboard.data.user.*;
@@ -20,6 +22,10 @@ import blackboard.persist.course.CourseMembershipDbLoader;
 
 import blackboard.persist.role.PortalRoleDbLoader;
 import blackboard.data.role.*;
+
+import blackboard.cms.filesystem.CSEntry;
+import blackboard.cms.filesystem.CSDirectory;
+import blackboard.cms.filesystem.CSContext;
 
 
 public class Util {
@@ -48,6 +54,8 @@ public class Util {
 			String ident = role.getIdentifier();
 			
 	    	retval += "Enrolled in: " + c.getTitle() + "(" + c.getCourseId() + ") Role: " + getCourseRoleString(role.getIdentifier()) + "<br/>";
+	    	System.out.println(retval);
+	    	retval += showMapView2(c.getId());	    
 	    //	getCourseRole(c.getCourseId(),userId);
 	      }
 		}
@@ -208,6 +216,173 @@ public class Util {
 		return uRole;
 	}
 	
+public String showDirectoryContents(String dirname,int level) { 
+	String retval = space("",level * 2,false) + dirname + "\n";
+	java.util.List<CSEntry> dirContents = getDirectoryContents(dirname);
+	
+	for (CSEntry entry : dirContents) { 
 
+		com.xythos.storageServer.api.FileSystemEntry x_entry = entry.getFileSystemEntry();
+		if (entry instanceof CSDirectory) 
+			retval += showDirectoryContents(entry.getFullPath(),level + 1); // Note: recursive call 
+		else 
+			retval += space("",level * 4,false) + entry.getBaseName() + " " + entry.getCreationTimestamp() + " " + 
+					entry.getLastUpdateTimestamp() + " " + entry.getSize() + "\n"; // "<br/>";		
+	}
+	
+	return retval;
+}
+public java.util.List<CSEntry> getDirectoryContents(String dirname) { 
+	java.util.List<CSEntry> dirContents = new java.util.ArrayList<CSEntry>();
+	
+	 CSContext ctxCS=null;
+	 try {
+	      ctxCS = CSContext.getContext();
+	      
+	      CSDirectory dir = null;
+	      CSEntry entry = ctxCS.findEntry(dirname);
+	      if (entry instanceof CSDirectory) { 
+	    	  dir = (CSDirectory)entry;
+	      }
+	 
+	      if (dir != null) { 
+	    	  dirContents = dir.getDirectoryContents();
+	      }
+	 
+	 } catch (Exception e) {
+	      ctxCS.rollback();
+	 } finally {
+	      if (ctxCS!=null) {     
+	    	  try {  ctxCS.commit();} catch(Exception e2) {}       
+	    	  } 
+	      }
+	 
+	 return dirContents;
+}
+
+/*
+ * SHows all the content in aourse.  
+ * All content is returned into the list, even though you don't know where it sits in 
+ * the heirarchy. That is, all items, or files, and folders are in the same list.
+ */ 
+public String showMapView(Id courseId) {
+    String retval = "<i>Course Content:<br/>";
+	java.util.List<Content> content = null;
+	
+	try { 
+		blackboard.persist.content.ContentDbLoader contentLoader = blackboard.persist.content.ContentDbLoader.Default.getInstance();
+		content = contentLoader.loadMapView(courseId,null);
+		for (Content con : content) {
+			retval += " -->" + con.getTitle() + " Avail=" + con.getIsAvailable() + " Folder=" + con.getIsFolder() + "<br/>";
+			blackboard.base.BbList<Content> list = contentLoader.loadListById(con.getId());
+			for (Content con2 : list) {				
+				String temp = "";
+				 blackboard.base.BbList<ContentFile> confile = con2.getContentFiles();
+				for (ContentFile cf : confile) { 
+					temp += cf.getName() + " " + cf.getLinkName();
+				}				
+				retval += " -->-->" + con2.getTitle() + " Avail=" + con2.getIsAvailable() + " Folder=" + con2.getIsFolder() 
+						+ " DataType=" + con2.getDataType().getName() + " Files=" + temp +  "<br/>";
+			}			
+		}		 
+	}
+	catch (PersistenceException pe) { 
+		System.err.println("Error" + pe.getMessage());		
+	}
+	
+	return retval + "<br/>";
+}
+
+/** 
+ * Uses recursive call to go down into content folder. 
+ * Problem is that all content below a level is returned into the list, even though you don't know where it sits in 
+ * the heirarchy. 
+ * 
+ * @param courseId
+ * @return
+ */
+public String showMapView2(Id courseId) {
+    String retval = "<i>Course Content:<br/>";
+	java.util.List<Content> content = null;
+	
+	try { 
+		blackboard.persist.content.ContentDbLoader contentLoader = blackboard.persist.content.ContentDbLoader.Default.getInstance();
+		content = contentLoader.loadMapView(courseId,null);
+		for (Content con : content) {  // First time through
+			retval += " -->" + con.getTitle() + " Avail=" + con.getIsAvailable() + " Folder=" + con.getIsFolder() + "<br/>";
+			if (con.getIsFolder()) {
+				blackboard.base.BbList<Content> list = contentLoader.loadListById(con.getId());
+				retval += showList(list,2);
+			}			
+		}		 
+	}
+	catch (PersistenceException pe) { 
+		System.err.println("Error" + pe.getMessage());		
+	}
+	
+	return retval + "<br/>";
+}
+
+/**
+ * Show one list. Recurses if it finds a folder. 
+ * @param content
+ * @param level
+ * @return
+ */
+private String showList(java.util.List<Content> content,int level) {
+	System.out.println("Calling showList with level=" + level);
+	boolean first = true;
+	
+	String retval = "";
+for (Content con : content) {				
+	String temp = "";
+	blackboard.base.BbList<ContentFile> confile = con.getContentFiles();
+	for (ContentFile cf : confile) { temp += cf.getName() + " " + cf.getLinkName();	}
+	
+	retval += showLevel(level) + con.getTitle() + " Avail=" + con.getIsAvailable() + " Folder=" + con.getIsFolder() 
+			+ " DataType=" + con.getDataType().getName() + " Path=" + con.getOfflinePath() 
+			+ " URL=" + con.getUrl() + " Files=" + temp +  "<br/>";
+	if (con.getIsFolder() && !first) {   // Don't recurse for the first, which is always the parent folder repeated.
+		System.out.println("Found a folder: " + con.getTitle());
+		try { 
+			blackboard.persist.content.ContentDbLoader contentLoader = blackboard.persist.content.ContentDbLoader.Default.getInstance();
+			blackboard.base.BbList<Content> list = contentLoader.loadListById(con.getId());
+		    retval += showList(list,level + 1);   // Note: recursive call
+		}
+		catch (PersistenceException pe) { 
+			System.err.println("Error" + pe.getMessage());		
+		}		
+	}
+	first = false;
+   }
+return retval;
+}
+
+private String showLevel(int level) { 
+	String retval = " ";
+	for (int k = 0 ; k < level ; k++)
+		retval += "-->";
+	return retval;
+}
+/**
+ * Space out a string to a specific length
+ * @param spacee - the original string
+ * @param l  - the new length required - either appended or prepended with spaces.
+ * @param front - true if prepend spaces, false if append.
+ */
+private String space(String spacee, int l, boolean front) {
+//String temp_spacee = spacee.trim();   // Why were we trimming it first???
+String temp_spacee = spacee;
+if (temp_spacee.length() > l) return temp_spacee.substring(0, l-1);
+StringBuffer SB = new StringBuffer(" ");
+SB.setLength(l - temp_spacee.length());
+String spaces = SB.toString().replace('\0', ' ');
+if (front) return spaces + temp_spacee;
+return temp_spacee + spaces;
+/*  StringBuffer SB = new StringBuffer(spacee);
+SB.setLength(l);
+return SB.toString().replace('\0', ' ');
+*/
+}
 
 }
