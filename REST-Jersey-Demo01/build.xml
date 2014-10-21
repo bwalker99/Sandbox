@@ -1,0 +1,79 @@
+<project name="REST-Jersey-Demo01" default="deploy" basedir=".">
+    <description>LTIForward</description>
+ 
+    <!-- set global properties for this build -->
+    <property environment="env" />
+    <property file="build.properties" />
+    <property name="app" value="REST-Jersey-Demo01"/>
+
+	<path id="jaxrs-lib"> 
+	
+		 <fileset dir="${apps_lib}/jaxrs-ri/lib">
+		    <include name="*.jar"/>
+		  </fileset>
+		
+		 <fileset dir="${apps_lib}/jaxrs-ri/api">
+		    <include name="*.jar"/>
+		  </fileset>
+
+			 <fileset dir="${apps_lib}/jaxrs-ri/ext">
+			    <include name="*.jar"/>
+			  </fileset>
+		</path>
+		
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build_dir}"/>
+    <mkdir dir="${dist_dir}"/>  	
+  </target>
+
+    <target name="compile" depends="init" description="Compile files... ">
+        <!-- Compile the java code from ${src_dir} into ${build_dir} -->
+    	<echo>Compile:CLASSPATH=${tomcat_home}/lib/servlet-api.jar;${tomcat_home}/lib;${jersey_lib};.</echo>
+        <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true"
+
+    	classpathref ="jaxrs-lib" 
+            includes="ca/cogomov/jersey/first/*" />
+    </target>
+	 
+	
+	<!-- Build application specific resources. Typically deploy to a .war file -->	
+  <target name="dist" depends="compile" description="generate the distribution" >
+
+  	<buildnumber file="resources/_${app}-build.jspf"/>
+  	
+    <!-- Create war file for distribution -->
+    <war destfile="${dist_dir}/${app}.war" webxml="${resources_dir}/WEB-INF/web.xml">
+    	 <fileset dir="${resources_dir}" includes="*.jsp,*.jspf,*.html,*.css,*.js"/>
+    	 <lib dir="${resources_dir}/WEB-INF/lib"> <include name="*.jar"/> </lib>
+	    <classes dir="${build_dir}" includes="**/*.class"/>  
+    	<classes dir="${resources_dir}" includes="*.properties" />
+    </war>
+  	
+  	
+  </target>
+	
+   <target name="deploy" depends="dist" description="deploy class files to local Tomcat">
+  	
+	<!--   Deploy war file to local tomcat  -->     
+	<echo>Copy war file to ${tomcat_home}/webapps/</echo>
+	
+	<copy todir="${tomcat_home}/webapps">
+		<fileset dir="${dist_dir}" includes="${app}.war"/>
+	</copy>
+		
+		
+  </target>
+
+  <target name="clean" description="clean up" >
+	    <!-- Delete the ${build} and ${dist} directory trees -->
+	    <delete dir="${build_dir}"/>
+	    <delete dir="${dist_dir}"/>
+  </target>
+	
+    <target name="clean-all" depends="clean">
+        <ant dir="${common_dir}" target="clean" inheritAll="false" />
+    </target>
+</project>
