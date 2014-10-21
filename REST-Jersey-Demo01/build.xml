@@ -8,17 +8,15 @@
 
 	<path id="jaxrs-lib"> 
 	
-		 <fileset dir="${apps_lib}/jaxrs-ri/lib">
+		 <fileset dir="${apps_lib}/jaxrs-ri">
 		    <include name="*.jar"/>
 		  </fileset>
 		
-		 <fileset dir="${apps_lib}/jaxrs-ri/api">
-		    <include name="*.jar"/>
+		 <fileset dir="${tomcat_home}/lib">
+		    <include name="servlet-api.jar"/>
 		  </fileset>
 
-			 <fileset dir="${apps_lib}/jaxrs-ri/ext">
-			    <include name="*.jar"/>
-			  </fileset>
+
 		</path>
 		
   <target name="init">
