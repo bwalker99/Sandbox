@@ -1,16 +1,28 @@
-Using the tutorial on the following site: 
-http://www.vogella.com/tutorials/REST/article.html
-
-TODO 
- - rewrite the client to be Jersey 2.0
- - could not get all functionality of client to work. 
- 
- Standard Jersey documentation: 
+Standard Jersey documentation: 
  
  https://jersey.java.net/documentation/latest/index.html
  
  Books
  http://stackoverflow.com/questions/9972764/good-books-about-java-rest-webservices
+ 
+------------------------
+Using the tutorial on the following site: 
+http://www.vogella.com/tutorials/REST/article.html
+ca.cogomov.jersey.first
+
+TODO 
+ - rewrite the client to be Jersey 2.0
+ - could not get all functionality of client to work. 
+ 
+can test with >curl localhost:8080/rest/hello
+
+ 
+ 
+ Java Web Services Up and Running
+ ca.cogomov.jersey.second - taken from this book. 
+  - not fully functional - no client examples.
+ 
+can test with >curl localhost:8080/rest2/json   
 
 
 

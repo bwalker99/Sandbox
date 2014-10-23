@@ -6,18 +6,13 @@
     <property file="build.properties" />
     <property name="app" value="REST-Jersey-Demo01"/>
 
-	<path id="jaxrs-lib"> 
-	
-		 <fileset dir="${apps_lib}/jaxrs-ri">
-		    <include name="*.jar"/>
-		  </fileset>
-		
-		 <fileset dir="${tomcat_home}/lib">
-		    <include name="servlet-api.jar"/>
-		  </fileset>
-
-
-		</path>
+	<path id="jaxrs-lib"> 	
+		 <fileset dir="${apps_lib}/jaxrs-ri/api" includes="*.jar" />
+		 <fileset dir="${apps_lib}/jaxrs-ri/ext" includes="*.jar" />			
+		 <fileset dir="${apps_lib}/jaxrs-ri/lib" includes="*.jar" />			
+		 <fileset dir="${apps_lib}/jackson" includes="*.jar" />		
+		 <fileset dir="${tomcat_home}/lib" includes="servlet-api.jar" />
+	</path>
 		
   <target name="init">
     <!-- Create the time stamp -->
@@ -33,7 +28,7 @@
         <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true"
 
     	classpathref ="jaxrs-lib" 
-            includes="ca/cogomov/jersey/first/*" />
+            includes="ca/cogomov/jersey/first/*,ca/cogomov/jersey/second/*," />
     </target>
 	 
 	
