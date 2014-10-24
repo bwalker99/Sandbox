@@ -18,7 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.servlet.ServletContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Path("/")
+@Path("/predictions")
 public class PredictionsRS {
 @Context
 private ServletContext sctx; // dependency injection

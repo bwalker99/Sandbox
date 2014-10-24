@@ -1,6 +1,9 @@
+
 Standard Jersey documentation: 
- 
- https://jersey.java.net/documentation/latest/index.html
+https://jersey.java.net/documentation/latest/index.html
+
+Jersey 2 API
+https://jersey.java.net/apidocs/latest/jersey/index.html 
  
  Books
  http://stackoverflow.com/questions/9972764/good-books-about-java-rest-webservices
@@ -17,12 +20,20 @@ TODO
 can test with >curl localhost:8080/rest/hello
 
  
- 
+ ----------------------------
  Java Web Services Up and Running
  ca.cogomov.jersey.second - taken from this book. 
   - not fully functional - no client examples.
+  - client examples in this book are all Jersey 1. Don't bother. 
+  - using client examples from first resource(vogella) to access ca.cogomov.jersey.second resources
  
 can test with >curl localhost:8080/rest2/json   
 
 
+Next: Check out tutorials and documentation at:
+ https://jersey.java.net/documentation/latest/index.html
+
+
+
+http://www.javacodegeeks.com/2013/07/restful-webservices-with-jersey.html
 
