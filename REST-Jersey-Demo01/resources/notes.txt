@@ -30,6 +30,13 @@ can test with >curl localhost:8080/rest/hello
 can test with >curl localhost:8080/rest2/json   
 
 
+-----------------------------
+Pluralsite course: 
+com.pluralsite.*
+
+http://www.pluralsight.com/courses/restful-services-java-using-jersey
+
+
 Next: Check out tutorials and documentation at:
  https://jersey.java.net/documentation/latest/index.html
 

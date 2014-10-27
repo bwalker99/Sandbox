@@ -46,8 +46,8 @@ public class TestClient {
     System.out.println("JSON: " + target.path("rest").path("todo-first").request().accept(MediaType.APPLICATION_JSON).get(Response.class).toString());
     
     System.out.println("\n\nTodo - 2");    
-    System.out.println("TEXT_XML: " + target.path("rest").path("todo-second").request().accept(MediaType.TEXT_XML).get(Response.class).toString());
-    System.out.println("TEXT_XML: " + target.path("rest").path("todo-second").request().accept(MediaType.TEXT_XML).get(String.class));
+    System.out.println("TEXT_XML-ResponseStatus: " + target.path("rest").path("todo-second").request().accept(MediaType.TEXT_XML).get(Response.class).toString());
+    System.out.println("TEXT_XML-Response      : " + target.path("rest").path("todo-second").request().accept(MediaType.TEXT_XML).get(String.class));
 
     System.out.println("JSON: " + target.path("rest").path("todo-second").request().accept(MediaType.APPLICATION_JSON).get(Response.class).toString());
 
@@ -59,14 +59,11 @@ public class TestClient {
     System.out.println("TEXT_XML: " + target.path("rest2").path("predictions/plain").request().accept(MediaType.TEXT_PLAIN).get(Response.class).toString());
     System.out.println("TEXT_XML: " + target.path("rest2").path("predictions/plain").request().accept(MediaType.TEXT_PLAIN).get(String.class));
 
-    System.out.println("JSON: " + target.path("rest2").path("predictions/json").request().accept(MediaType.APPLICATION_JSON).get(Response.class).toString());
-
-    System.out.println("XML: " + target.path("rest2").path("predictions/xml").request().accept(MediaType.APPLICATION_XML).get(String.class));
+    System.out.println("JSON-ResponseStatus: " + target.path("rest2").path("predictions/json").request().accept(MediaType.APPLICATION_JSON).get(Response.class).toString());
+    System.out.println("JSON-Response:       " + target.path("rest2").path("predictions/json").request().accept(MediaType.APPLICATION_JSON).get(String.class));
     
-    System.out.println("JSON: " + target.path("rest2").path("predictions/json").request().accept(MediaType.APPLICATION_JSON).get(Response.class).toString());
-    
-
-    
+    System.out.println("XML-ResponseStatus: " + target.path("rest2").path("predictions/xml").request().accept(MediaType.APPLICATION_XML).get(Response.class).toString());
+    System.out.println("XML-Response      : " + target.path("rest2").path("predictions/xml").request().accept(MediaType.APPLICATION_XML).get(String.class));
     
   }
 
