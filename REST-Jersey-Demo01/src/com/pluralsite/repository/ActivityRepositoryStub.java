@@ -19,8 +19,8 @@ public class ActivityRepositoryStub implements ActivityRepository {
 		activities.add(act1);
 		
 		Activity act2 = new Activity();
-		act1.setDescription("Cycling");
-		act1.setDuration(120);
+		act2.setDescription("Cycling");
+		act2.setDuration(120);
 		activities.add(act2);
 		
 		return activities;

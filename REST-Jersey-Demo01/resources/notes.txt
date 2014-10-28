@@ -19,6 +19,7 @@ TODO
  
 can test with >curl localhost:8080/rest/hello
 
+curl --header "Accept: text/plain" localhost:8080/REST-Jersey-Demo01/rest/todo-second/count
  
  ----------------------------
  Java Web Services Up and Running
@@ -36,7 +37,11 @@ com.pluralsite.*
 
 http://www.pluralsight.com/courses/restful-services-java-using-jersey
 
+curl  localhost:8080/REST-Jersey-Demo01/pluralsite/activities
 
+
+
+-----------------------
 Next: Check out tutorials and documentation at:
  https://jersey.java.net/documentation/latest/index.html
 

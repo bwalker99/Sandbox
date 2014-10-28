@@ -28,7 +28,7 @@
         <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true"
 
     	classpathref ="jaxrs-lib" 
-            includes="ca/cogomov/jersey/first/*,ca/cogomov/jersey/second/*," />
+            includes="ca/cogomov/jersey/first/*,ca/cogomov/jersey/second/*,com/pluralsite/model/*,com/pluralsite/repository/*" />
     </target>
 	 
 	
