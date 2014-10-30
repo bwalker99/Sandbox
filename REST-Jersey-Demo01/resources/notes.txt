@@ -39,6 +39,16 @@ http://www.pluralsight.com/courses/restful-services-java-using-jersey
 
 curl  localhost:8080/REST-Jersey-Demo01/pluralsite/activities
 
+Difficult to find json jars without maven. see: 
+https://java.net/jira/browse/GLASSFISH-21141
+Still can't get JSON to work. Need to find the appropriate jar files. Maven does it all for you!!!
+
+curl  localhost:8080/REST-Jersey-Demo01/pluralsite/activities/xxxx
+
+curl  localhost:8080/REST-Jersey-Demo01/pluralsite/activities/xxxx/user
+curl -i --header "Accept application/xml" localhost:8080/REST-Jersey-Demo01/pluralsite/activities
+
+
 
 
 -----------------------
@@ -46,6 +56,6 @@ Next: Check out tutorials and documentation at:
  https://jersey.java.net/documentation/latest/index.html
 
 
-
 http://www.javacodegeeks.com/2013/07/restful-webservices-with-jersey.html
 
+http://puspendu.wordpress.com/2012/08/23/restful-webservice-file-upload-with-jersey/
