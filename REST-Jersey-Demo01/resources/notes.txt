@@ -58,6 +58,8 @@ Error Message:
 org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException: MessageBodyWriter not found for media type=application/json, 
 type=class com.pluralsite.model.Activity, genericType=class com.pluralsite.model.Activity.
 
+*** works when changed to XML. Something wrong with passing JSON for POST. 
+
 
 
 -----------------------

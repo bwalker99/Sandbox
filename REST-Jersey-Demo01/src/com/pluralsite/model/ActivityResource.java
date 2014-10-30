@@ -15,8 +15,8 @@ private ActivityRepository actRepository = new ActivityRepositoryStub();
 
 @POST
 @Path("activity")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+@Consumes(MediaType.APPLICATION_XML)   // changed from JSON in course
+@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 public Activity createActivity(Activity activity) {
 			
 	System.out.println(activity.getDescription());

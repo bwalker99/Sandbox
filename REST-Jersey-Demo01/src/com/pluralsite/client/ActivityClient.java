@@ -25,8 +25,9 @@ public class ActivityClient {
 	public Activity create(Activity activity) {
 		WebTarget target = client.target("http://localhost:8080/REST-Jersey-Demo01/pluralsite/");
 
-		Response response =  target.path("activities/activity").request(MediaType.APPLICATION_JSON)
-				.post(Entity.entity(activity,MediaType.APPLICATION_JSON));
+		// Changed from JSON in course
+		Response response =  target.path("activities/activity").request(MediaType.APPLICATION_XML)
+				.post(Entity.entity(activity,MediaType.APPLICATION_XML));
 		
 		if (response.getStatus() != 200) {
 			throw new RuntimeException(response.getStatus() + ": error on server.");			
