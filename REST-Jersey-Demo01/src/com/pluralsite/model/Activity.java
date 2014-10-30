@@ -39,5 +39,8 @@ public class Activity {
 		this.user = user;
 	}
 	
-
+public String toString() { 
+	return id + " " + duration + " " + description;
+}
+	
 }

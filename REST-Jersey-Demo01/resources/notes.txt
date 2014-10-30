@@ -42,12 +42,21 @@ curl  localhost:8080/REST-Jersey-Demo01/pluralsite/activities
 Difficult to find json jars without maven. see: 
 https://java.net/jira/browse/GLASSFISH-21141
 Still can't get JSON to work. Need to find the appropriate jar files. Maven does it all for you!!!
+Now works:
+Discovered method of getting jars. Download and build the application as per maven examples. Explode the war file and get the jars
+from WEB-INF/lib 
 
 curl  localhost:8080/REST-Jersey-Demo01/pluralsite/activities/xxxx
 
 curl  localhost:8080/REST-Jersey-Demo01/pluralsite/activities/xxxx/user
 curl -i --header "Accept application/xml" localhost:8080/REST-Jersey-Demo01/pluralsite/activities
 
+Using Chrome plugin 'Poster' to test functionality. 
+
+Post Client Demo module - did not get POST to work. Problem with JSON handling. 
+Error Message: 
+org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException: MessageBodyWriter not found for media type=application/json, 
+type=class com.pluralsite.model.Activity, genericType=class com.pluralsite.model.Activity.
 
 
 

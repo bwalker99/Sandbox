@@ -68,6 +68,18 @@ public class TestClient {
     System.out.println("XML-ResponseStatus: " + target.path("rest2").path("predictions/xml").request().accept(MediaType.APPLICATION_XML).get(Response.class).toString());
     System.out.println("XML-Response      : " + target.path("rest2").path("predictions/xml").request().accept(MediaType.APPLICATION_XML).get(String.class));
     
+
+    System.out.println("\n\nPluralsight");    
+//    System.out.println("TEXT_XML: " + target.path("pluralsite").path("activities").request().accept(MediaType.TEXT_PLAIN).get(Response.class).toString());
+//    System.out.println("TEXT_XML: " + target.path("pluralsite").path("activities").request().accept(MediaType.TEXT_PLAIN).get(String.class));
+
+    System.out.println("JSON-ResponseStatus: " + target.path("pluralsite").path("activities").request().accept(MediaType.APPLICATION_JSON).get(Response.class).toString());
+    System.out.println("JSON-Response:       " + target.path("pluralsite").path("activities").request().accept(MediaType.APPLICATION_JSON).get(String.class));
+    
+    System.out.println("XML-ResponseStatus: " + target.path("pluralsite").path("activities").request().accept(MediaType.APPLICATION_XML).get(Response.class).toString());
+    System.out.println("XML-Response      : " + target.path("pluralsite").path("activities").request().accept(MediaType.APPLICATION_XML).get(String.class));
+
+    
   }
 
   private static URI getBaseURI() {
