@@ -61,6 +61,9 @@ type=class com.pluralsite.model.Activity, genericType=class com.pluralsite.model
 *** works when changed to XML. Something wrong with passing JSON for POST. 
 
 
+Dependencay issue: 
+jersey-container-servlet-core-2.2.jar and jersey-container-servlet.jar cannot co-exist. 
+Removed jersey-container-servlet.jar 
 
 -----------------------
 Next: Check out tutorials and documentation at:

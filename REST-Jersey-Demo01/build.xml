@@ -35,7 +35,7 @@
 	<!-- Build application specific resources. Typically deploy to a .war file -->	
   <target name="dist" depends="compile" description="generate the distribution" >
 
-  	<buildnumber file="resources/_${app}-build.jspf"/>
+ <!-- 	<buildnumber file="resources/_${app}-build.jspf"/> -->
   	
     <!-- Create war file for distribution -->
     <war destfile="${dist_dir}/${app}.war" webxml="${resources_dir}/WEB-INF/web.xml">
