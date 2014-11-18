@@ -56,7 +56,7 @@ public class ActivityClient {
 		System.out.println("Json output: " + json);
 		System.out.println("XML default: " + xml1);
 		System.out.println("XML explicit:" + xml2);
-		System.out.println("Class output:" + response);
+		System.out.println("\nClass output:" + response);
 		
 		return response.readEntity(Activity.class);		
 	}
@@ -74,12 +74,12 @@ public static void main(String args[]) {
 	ActivityClient AC = new ActivityClient();
 	System.out.println("Testing object:");
 	AC.get("zzzz");
-	System.out.println("Testing List:");
+	System.out.println("\nTesting List:");
 	List<Activity> AL = AC.get();
 	for (Activity al : AL) 
-		System.out.println(al);
+		System.out.println("  " + al);
 	
-	System.out.println("Testing bad object:");
+	System.out.println("\nTesting bad object:");
 	AC.get("zz");
 }
 	

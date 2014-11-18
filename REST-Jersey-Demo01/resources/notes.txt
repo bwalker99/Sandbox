@@ -70,3 +70,6 @@ Next: Check out tutorials and documentation at:
 http://www.javacodegeeks.com/2013/07/restful-webservices-with-jersey.html
 
 http://puspendu.wordpress.com/2012/08/23/restful-webservice-file-upload-with-jersey/
+
+Official Oracle/Sun/Java docs
+http://docs.oracle.com/cd/E24329_01/web.1211/e24983/develop.htm
