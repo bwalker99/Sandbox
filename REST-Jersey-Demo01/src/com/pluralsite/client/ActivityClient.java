@@ -72,15 +72,16 @@ public class ActivityClient {
 
 public static void main(String args[]) { 
 	ActivityClient AC = new ActivityClient();
-	System.out.println("Testing object:");
-	AC.get("zzzz");
+
 	System.out.println("\nTesting List:");
 	List<Activity> AL = AC.get();
 	for (Activity al : AL) 
 		System.out.println("  " + al);
 	
+	System.out.println("\nTesting object:");	
+	AC.get("1234");
 	System.out.println("\nTesting bad object:");
-	AC.get("zz");
+	AC.get("3333");
 }
 	
 }
