@@ -25,6 +25,7 @@ public class ActivityClient {
 	public Activity create(Activity activity) {
 		WebTarget target = client.target("http://localhost:8080/REST-Jersey-Demo01/pluralsite/");
 
+		System.out.println("Activity Client:  creating activity for " + activity); 
 		// Changed from JSON in course
 		Response response =  target.path("activities/activity").request(MediaType.APPLICATION_XML)
 				.post(Entity.entity(activity,MediaType.APPLICATION_XML));
@@ -79,9 +80,21 @@ public static void main(String args[]) {
 		System.out.println("  " + al);
 	
 	System.out.println("\nTesting object:");	
-	AC.get("1234");
-	System.out.println("\nTesting bad object:");
-	AC.get("3333");
+	Activity act = AC.get("1234");
+	//System.out.println("\nTesting bad object:");
+	// AC.get("3333");
+	Activity act1 = new Activity();
+	act1.setDescription("Snorkelling");
+	act1.setDuration(45);
+	System.out.println("\nCreating activity : " + act1);
+	Activity act2 = AC.create(act1);
+	System.out.println("\nCreated activity : " + act2);
+	
+	System.out.println("\n\nTesting List again:");
+	AL = AC.get();
+	for (Activity al : AL) 
+		System.out.println("  " + al);
+
 }
 	
 }

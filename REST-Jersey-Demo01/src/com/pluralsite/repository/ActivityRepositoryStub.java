@@ -35,6 +35,8 @@ public class ActivityRepositoryStub implements ActivityRepository {
 			user.setLastname("spade");
 			act2.setUser(user);
 			activities.add(act2);
+			
+			show();
 	
 		}
 		
@@ -84,7 +86,6 @@ public class ActivityRepositoryStub implements ActivityRepository {
 		Activity act2 = null;
 		
 		for (Activity act : activities) { 
-			System.out.println(" -->Activity: " + act.getId() + " " + act.getDescription());
 			if (act.getId().equals(activityId)) { 
 				act2 = act;
 				break;
@@ -95,10 +96,18 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	}
 
 	@Override
-	public void create(Activity act) {
+	public Activity create(Activity act) {
+		act.setId("2323");
+		System.out.println(" -->Adding Activity: " + act);
 		activities.add(act);
-		
+		show();
+		return act;
 	}
 	
+	private void show() {
+		System.out.println("List of activities");
+		for (Activity act : activities)   
+				System.out.println(" -->Activity: " + act);			 						
+	}
 
 }

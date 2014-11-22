@@ -53,15 +53,18 @@ curl -i --header "Accept application/xml" localhost:8080/REST-Jersey-Demo01/plur
 
 Using Chrome plugin 'Poster' to test functionality. 
 
-Post Client Demo module - did not get POST to work. Problem with JSON handling. 
+Post Client Demo module - did not get POST to work with JSON. Problem with JSON handling. 
 Error Message: 
 org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException: MessageBodyWriter not found for media type=application/json, 
 type=class com.pluralsite.model.Activity, genericType=class com.pluralsite.model.Activity.
 
-*** works when changed to XML. Something wrong with passing JSON for POST. 
+Post from Poster and from client works when changed to XML. Something wrong with passing JSON for POST. 
+
+== Next module - PUT
 
 
-Dependencay issue: 
+
+Dependency issue: 
 jersey-container-servlet-core-2.2.jar and jersey-container-servlet.jar cannot co-exist. 
 Removed jersey-container-servlet.jar 
 

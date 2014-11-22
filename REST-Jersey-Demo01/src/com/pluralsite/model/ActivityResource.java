@@ -13,22 +13,28 @@ public class ActivityResource {
 private ActivityRepository actRepository = new ActivityRepositoryStub();
 
 
+// Does work. When calling it with Header Content-Type: application/json and sending json as {"duration":15,"desc":"Swimming" }
+
 @POST
 @Path("activity")
-@Consumes(MediaType.APPLICATION_XML)   // changed from JSON in course
+// @Consumes(MediaType.APPLICATION_XML)   // changed from JSON in course
+@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON}) 
 @Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 public Activity createActivity(Activity activity) {
 			
-	System.out.println(activity.getDescription());
-	System.out.println(activity.getDuration());
+	System.out.println(this.getClass().getName() + ":" + activity.getDescription());
+	System.out.println(this.getClass().getName() + ":" + activity.getDuration());
 	
-	actRepository.create(activity);
+	Activity actreturn = actRepository.create(activity);
 	
-	return activity;
+	return actreturn;
 }
 
 
 
+// Doesn't WORK!! Gives 
+//<h1>HTTP Status 415 - Unsupported Media Type</h1>
+//        <u>The server refused this request because the request entity is in a format not supported by the requested resource for the requested method.</u>
 @POST
 @Path("activity")
 @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
