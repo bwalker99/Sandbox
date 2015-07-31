@@ -32,6 +32,17 @@
     <servlet-class>javaed.HelloServlet4</servlet-class>
   </servlet>
   
+  <servlet>
+    <servlet-name>CSVServlet</servlet-name>
+    <servlet-class>javaed.CSVServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>CSVServlet</servlet-name>
+    <url-pattern>/csv</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet-mapping>
     <servlet-name>HelloServlet1</servlet-name>
     <url-pattern>/test1</url-pattern>
