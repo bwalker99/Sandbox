@@ -7,13 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Name coming from a form. Going to a jsp.
- * @author rwalker
- *
- */
 
-public class HelloServlet4 extends HttpServlet {
+public class AutoSubmit extends HttpServlet {
 	  private String name;
 
 	  public void init() throws ServletException {
@@ -23,27 +18,29 @@ public class HelloServlet4 extends HttpServlet {
 
 	  public void doGet(HttpServletRequest request,HttpServletResponse response)
 	            throws ServletException, IOException	  {
-		  name="NoName";	
+		  name="NoName";
+		  String tofile = "auto.jsp";
+		  
 		  // Set response content type
-	      response.setContentType("text/html");
-
-	      java.io.PrintWriter out = response.getWriter();
-	      out.println("<pre>" + this.getClass().getName() + ". Output from doGet()</pre><br/>");
+		  name="NoName";
+	      String temp = request.getParameter("name");
+	      if (temp != null && temp.length() > 0)
+	    	  name=temp;
+	      temp = request.getParameter("tofile");
+	      if (temp != null && temp.length() > 0)
+	    	  tofile = temp;
+	      
+	      request.setAttribute("nameVar", name);
+	      System.out.println("AutoSubmit. Name=" + name);
+	      String nextJSP = "/" + tofile;
+	      RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+	      dispatcher.forward(request,response);
+	      
 	  }
 	  
 	  public void doPost(HttpServletRequest request,HttpServletResponse response)
 	            throws ServletException, IOException	  {
 	      // Set response content type
-		  name="NoName";
-	      String temp = request.getParameter("name");
-	      if (temp != null && temp.length() > 0)
-	    	  name=temp;
-	      
-	      request.setAttribute("nameVar", name);
-	      System.out.println("HelloServlet4:forwarding to jsp");
-	      String nextJSP = "/nameOutput.jsp";
-	      RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-	      dispatcher.forward(request,response);
 	      
 	  }
 

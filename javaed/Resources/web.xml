@@ -37,6 +37,17 @@
     <servlet-class>javaed.CSVServlet</servlet-class>
   </servlet>
   
+    <servlet>
+    <servlet-name>AutoSubmit</servlet-name>
+    <servlet-class>javaed.AutoSubmit</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AutoSubmit</servlet-name>
+    <url-pattern>/autosub</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet-mapping>
     <servlet-name>CSVServlet</servlet-name>
     <url-pattern>/csv</url-pattern>
