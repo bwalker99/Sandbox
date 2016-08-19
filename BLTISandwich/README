@@ -1,0 +1,110 @@
+===============================================================================
+ 
+                               blti-sandwich
+
+ A simple and tasty Java library for implementing and gluing together Tool 
+ Provider and Tool Consumers that implement the IMS Basic LTI Specification
+
+ It currently is written to work with version 1.0 of the specification, which 
+ can be found at: 
+ 
+       http://www.imsglobal.org/lti/blti/bltiv1p0/ltiBLTIimgv1p0.html
+        
+===============================================================================
+
+-----------------
+ 1. Dependencies
+-----------------
+
+blti-sandwich depends on the following:
+
+- The oauth library from http://code.google.com/p/oauth/
+  - In specific, the core, consumer, and producer components.
+  - The oauth library has its own set of dependencies
+    - Apache commons-codec seems to be the only thing necessary.
+- The Java Servlet API
+
+-------------
+ 2. Building
+-------------
+
+To build blti-sandwich you can use the provided Ant buildfile.  You can also
+import the project into Eclipse and build it from there. 
+
+The "dist" target will compile the library and produce a blti-sandwich.jar jar
+file in the "dist" directory.
+
+The "clean" target will remove the "dist" directory.
+
+----------
+ 3. Usage
+----------
+
+You can use blti-sandwich help create Tool Consumers as well as Tool Providers.
+
+The glue between the producer and consumer is the BLTIMessage class.  This
+contains all of the parameters that the consumer can send to the provider.  The
+only required parameter is the "id" of the ResourceLink.  However, in order to 
+provide a useful experience, it is recommended that you populate as many of the
+parameters as you can.
+
+Creating a Tool Consumer
+------------------------
+
+To perform a launch to a Tool Provider, you:
+
+1. Create a BLTIMessage using your consumer key.
+2. Populate it with the required (and optional) parameters.
+3. Sign it with the shared secret.
+4. Obtain the signed launch parameters.
+5. Auto-POST a <form> to the Tool Provider URL that contains all of the launch 
+   parameters.
+   
+blti-sandwich helps you with steps 1-4
+
+Example:
+
+    BLTIMessage msg = new BLTIMessage( "myConsumerKey" );
+    msg.getResourceLink().setId( "testResourceId" );
+    msg.getUser().setId( "jsmith" );
+    msg.getUser().setFullName( "John Smith" );
+    msg.getUser().addRole( new Role( "Instructor" ) );
+    
+    BLTIConsumer consumer = new BLTIConsumer( "POST", "http://url.to/tool/provider" );
+    consumer.sign( "mySharedSecret" );
+    Map<String,String> launchParams = consumer.getParameters();
+    
+    //... after this, create the <form> that autoposts
+    
+
+Creating a Tool Provider
+------------------------
+
+To accept Basic LTI launch requests, you:
+
+1. Create a servlet that's listening on some URL
+2. Use BLTIProvider to get the BLTIMessage from the HTTPServletRequest
+3. Obtain the consumer key from the message, look up the shared secret
+4. Validate the message.
+5. If the message is valid, use the data in the message, for example to 
+   provision a user account and set up a session.
+   
+blti-sandwich helps you with steps 2 and 4
+
+Example (in a servlet's doPost):
+
+    BLTIMessage msg = BLTIProvider.getMessage( request );
+    String key = msg.getKey();
+    String secret = //... get the secret somehow, e.g. look it up in a database based on the key
+    if ( BLTIProvider.isValid( msg, secret ) )
+    {
+      // Success! Handle the message... e.g.
+      String resourceId = msg.getResourceLink().getId();
+      boolean isInstructor = m.getUser().isInstructor();
+      // ...
+    }
+    else
+    {
+      // ERROR
+      response.sendError( HttpServletResponse.SC_FORBIDDEN, "Bad Basic LTI Launch" );  
+    }  

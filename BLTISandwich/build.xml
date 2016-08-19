@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="blti-sandwich" default="dist">
+    <property file="build.properties" />
+	
+	<target name="dist" depends="clean">
+		<echo>Building blti-sandwich.jar...</echo>
+    <mkdir dir="${dist_dir}"/>
+    <mkdir dir="${build_dir}"/>		
+		
+   <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true"     	
+	  classpath="${common_lib}/servlet-api.jar;lib/commons-codec-1.4.jar;lib/oauth.jar;lib/oauth-consumer.jar;lib/oauth-provider.jar;."     	
+	             />		
+<!--   
+		<javac srcdir="src" destdir="build">
+  	  <classpath>
+  	    <fileset dir="lib">
+  	      <include name="*.jar"/>
+  	    </fileset>
+  	  </classpath>		
+	  </javac>
+-->
+	<jar basedir="${build_dir}" destfile="${dist_dir}/blti-sandwich.jar"/>		
+		
+	 <echo>Creating war file...</echo>
+
+	  <war destfile="${dist_dir}/bltisandwich.war" webxml="${resources_dir}/web.xml">
+			    <fileset dir="${resources_dir}" includes="*.jsp,*.jspf,*.html,*.css,*.js"/> 
+		    <!-- <classes dir="build" includes="**/*.class"/> -->  
+	    	<lib dir="${dist_dir}"> <include name="blti-sandwich.jar"/> </lib>
+	    	<lib dir="${lib_dir}"> <include name="*.*"/> </lib>
+	    </war>
+		
+		<echo>Copying war file to ${tomcat_home}/webapps</echo>
+		<copy todir="${tomcat_home}/webapps/">
+			<fileset dir="${dist_dir}" includes="bltisandwich.war"/>
+		</copy>
+  </target>
+	
+	<target name="javadoc">
+		<echo>Building blti-sandwich javadoc</echo>
+	  <mkdir dir="dist/javadoc"/>
+		<javadoc destdir="dist/javadoc">
+		 <packageset dir="src" includes="blackboard/blti/**"/>
+		</javadoc>
+	</target>
+	
+
+  <target name="clean">
+		<echo>Cleaning up dist directory...</echo>
+    <delete dir="dist"/>
+  </target>
+
+</project>
