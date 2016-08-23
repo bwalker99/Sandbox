@@ -62,7 +62,21 @@ public class Client  extends HttpServlet {
 			    msg.getUser().setId( "medstu1" );
 			    msg.getUser().setLisSourcedId("medstu1");
 			    msg.getUser().setFullName( "Medicine Student One" );
-			    msg.getUser().addRole( new Role( "Student" ) );
+			    msg.getUser().addRole( new Role( "Learner" ) );
+			    
+			    msg.getContext().setType("CourseOffering");
+			    msg.getToolConsumerInfo().setDescription("FoMStudent");
+			    msg.getToolConsumerInfo().setEmail("medit.elearningios@ubc.ca");
+			    msg.getToolConsumerInfo().setUrl("http://localhost:8080/bltisandwich");
+			    msg.getToolConsumerInfo().setName("FoMStudent");
+			    msg.getToolConsumerInfo().setGuid("0a6fd1b7-1258-48e3-ad41-7a0249aeb83a");
+			    
+			    msg.getLaunchPresentation().setDocumentTarget("window");
+			    msg.getLaunchPresentation().setLocale("en_US");
+			    msg.getLaunchPresentation().setReturnUrl("http://localhost:8080/bltisandwich/test.html");
+			    
+			    msg.getContext().setId("99dd04aa5b5e4514815d7122959bc6aa");
+			    			    
 			    
 			    BLTIConsumer consumer = new BLTIConsumer( "POST", launchsite,msg );
 			    consumer.sign(mysecret);
@@ -243,8 +257,7 @@ public class Client  extends HttpServlet {
 		        text.append("  }\n");
 		        text.append("}\n");
 		        text.append("</script>\n");
-		        
-		        System.out.println("===SoFar2===:" + text.toString());		        
+		               
 		        // paint debug output
 		        if (debug) {
 		            text.append("<pre>\n");
@@ -282,8 +295,7 @@ public class Client  extends HttpServlet {
 		                            + "	document.ltiLaunchForm.submit(); \n" + " </script> \n");
 		        }
 
-		        String htmltext = text.toString();
-		        System.out.println("===SoFar3===:" + htmltext);		        
+		        String htmltext = text.toString();        
 		        return htmltext;
 		    }
 

@@ -18,9 +18,19 @@
     <servlet-class>blackboard.blti.client.Client</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>Client2</servlet-name>
+    <servlet-class>blackboard.blti.client.Client2</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>Client</servlet-name>
     <url-pattern>/client</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Client2</servlet-name>
+    <url-pattern>/client2</url-pattern>
   </servlet-mapping>
 
 </web-app>

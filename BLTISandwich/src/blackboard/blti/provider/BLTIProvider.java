@@ -139,15 +139,17 @@ public class BLTIProvider
 
       // Check required BLTI parameters.
       if ( !MESSAGE_TYPE_VALUE.equals( msg.getMessageType() ) || !LTI_VERSION_VALUE.equals( msg.getLtiVersion() )
-           || StringUtil.isEmpty( msg.getResourceLink().getId() ) || StringUtil.isEmpty( key ) )
-      {
+           || StringUtil.isEmpty( msg.getResourceLink().getId() ) || StringUtil.isEmpty( key ) )      {
+    	System.out.println("LTI authentication error: messageYype=" + msg.getMessageType() + " LTI Version=" + msg.getLtiVersion() + 
+    			" resourceLinkId=" + msg.getResourceLink().getId() + " key=" + key);  
         return false;
       }
 
       return true;
     }
-    catch ( Exception e )
-    {
+    catch ( Exception e )    {
+    	System.out.println("LTI authentication through exception : " + e.getMessage());
+    	e.printStackTrace();
       return false;
     }
   }

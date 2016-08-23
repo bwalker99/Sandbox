@@ -8,7 +8,7 @@
     <mkdir dir="${build_dir}"/>		
 		
    <javac srcdir="${src_dir}" destdir="${build_dir}" debug="true"     	
-	  classpath="${common_lib}/servlet-api.jar;lib/commons-codec-1.4.jar;lib/oauth.jar;lib/oauth-consumer.jar;lib/oauth-provider.jar;."     	
+	  classpath="${common_lib}/servlet-api.jar;lib/commons-codec-1.4.jar;lib/oauth.jar;lib/oauth-consumer.jar;lib/oauth-provider.jar;${common_lib}/basiclti-util-1.1.2.jar;."     	
 	             />		
 <!--   
 		<javac srcdir="src" destdir="build">
