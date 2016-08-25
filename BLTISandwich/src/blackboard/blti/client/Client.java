@@ -56,7 +56,8 @@ public class Client  extends HttpServlet {
 		  private void postClient(HttpServletRequest request, HttpServletResponse response) {
 			  		
 			  
-             String launchsite = "https://mdupusers.med.ubc.ca:8443/fomstudent-lti/login";
+             // String launchsite = "https://mdupusers.med.ubc.ca:8443/fomstudent-lti/login";
+             String launchsite = "http://localhost:8080/fomstudent-lti/login";
 			    BLTIMessage msg = new BLTIMessage( "ConsumerKey" );
 			    msg.getResourceLink().setId( "testResourceId" );
 			    msg.getUser().setId( "medstu1" );
@@ -215,7 +216,8 @@ public class Client  extends HttpServlet {
 		        text.append("<form action=\"");
 		        text.append(endpoint);
 		        text.append("\" name=\"ltiLaunchForm\" id=\"ltiLaunchForm\" method=\"post\" ");
-		        text.append(" encType=\"application/x-www-form-urlencoded\" accept-charset=\"utf-8\">\n");
+//		        text.append(" encType=\"application/x-www-form-urlencoded\" accept-charset=\"utf-8\">\n");
+		        text.append(" encType=\"application/x-www-form-urlencoded\">\n");		        
 		        for (Entry<String, String> entry : newMap.entrySet()) {
 		            String key = entry.getKey();
 		            String value = entry.getValue();

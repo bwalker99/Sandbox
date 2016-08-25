@@ -20,7 +20,8 @@ import java.io.PrintWriter;
 
 public class Client2  extends HttpServlet {
 	
-	private String mysecret = "S3cr3t419s3nT8"; // TODO - get from properties file
+	// private String mysecret = "S3cr3t419s3nT8"; // TODO - get from properties file
+	private String mysecret = "secret"; // TODO - get from properties file
 	
     public static final String BASICLTI_SUBMIT = "ext_basiclti_submit";
 
@@ -38,7 +39,9 @@ public class Client2  extends HttpServlet {
 		  private void postClient(HttpServletRequest request, HttpServletResponse response) {
 			  		
 			  
-             String launchsite = "https://mdupusers.med.ubc.ca:8443/fomstudent-lti/login";
+             // String launchsite = "https://mdupusers.med.ubc.ca:8443/fomstudent-lti/login";
+             // String launchsite = "http://localhost:8080/fomstudent-lti/login";
+             String launchsite = "http://lti.tools/test/tp.php";
              
              Map<String,String> parameters = new TreeMap<String,String>();
              parameters.put(BasicLTIConstants.RESOURCE_LINK_ID, "429785226");
@@ -64,8 +67,9 @@ public class Client2  extends HttpServlet {
 			LtiSigner ltiSigner = new LtiOauthSigner();
 			
 			try {
-			    Map<String, String> signedParameters = ltiSigner.signParameters(parameters, "ConsumerKey", mysecret, launchsite, "POST");
+			    Map<String, String> signedParameters = ltiSigner.signParameters(parameters, "ConsumerKey", mysecret, launchsite, "POST");			    
 			    String output = BasicLTIUtil.postLaunchHTML(signedParameters,launchsite,false);
+			    System.out.println(output + "\nValidation:" + BasicLTIUtil.validateDescriptor(output));
 				PrintWriter out = response.getWriter();
 				out.println(output);
 			}
